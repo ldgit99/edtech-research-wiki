@@ -90,6 +90,13 @@ body{background:var(--bg);color:var(--txt);font-family:'Segoe UI',system-ui,sans
                line-height:1.5;font-style:italic}
 .rec-rationale{color:#475569;line-height:1.65;margin-bottom:8px}
 .rec-journals{font-size:12px;color:var(--muted)}
+.trend-detail{margin-top:10px;padding:12px 14px;background:#f1f5f9;
+               border-left:3px solid #6366f1;border-radius:0 6px 6px 0}
+.trend-detail-text{color:#334155;font-size:13px;line-height:1.75}
+.detail-btn{margin-top:8px;background:none;border:1px solid #cbd5e1;
+             color:#6366f1;font-size:11px;font-weight:600;padding:4px 10px;
+             border-radius:6px;cursor:pointer;transition:all .2s}
+.detail-btn:hover{background:#ede9fe;border-color:#6366f1}
 
 /* Stat bars */
 .stat-row{display:flex;align-items:center;gap:10px;margin-bottom:8px}
@@ -244,6 +251,7 @@ body{background:var(--bg);color:var(--txt);font-family:'Segoe UI',system-ui,sans
                 <div class="trend-title">생성형 AI의 교육적 활용</div>
                 <div class="trend-desc">최근의 연구는 생성형 AI의 교육적 응용 가능성을 탐구하고 있으며, 이러한 동향은 컴퓨터와 교육 AI 저널에서 두드러진다. 특히, AI 기술이 학습자의 창의성을 증진할 수 있는 방법에 대한 논의가 활발하다.</div>
                 <div class="trend-evidence">근거: ‘Generative AI in higher education: A bibliometric review of emerging trends, power dynamics, and glo’, ‘Can Generative AI support the learning agency of students with disability?’</div>
+                
               </div>
             </div>
             <div class="trend-card">
@@ -252,6 +260,7 @@ body{background:var(--bg);color:var(--txt);font-family:'Segoe UI',system-ui,sans
                 <div class="trend-title">학습 분석의 중요성 증가</div>
                 <div class="trend-desc">학습 분석 분야의 연구들이 교육 결과를 최적화하고 있으며, 이는 Learning Analytics 저널에서 받아들이고 있다. 데이터를 분석하여 학습 향상에 기여하는 다양한 방법들이 제안되고 있다.</div>
                 <div class="trend-evidence">근거: ‘Learning Analytics to Uncover Ethnic Bias in Educational Texts’, ‘Evaluating 21st-Century Competencies in Postsecondary Curricula with Large Language Models’</div>
+                
               </div>
             </div>
             <div class="trend-card">
@@ -260,6 +269,7 @@ body{background:var(--bg);color:var(--txt);font-family:'Segoe UI',system-ui,sans
                 <div class="trend-title">피드백 메커니즘의 재조명</div>
                 <div class="trend-desc">피드백의 양적 및 질적 차원에 대한 연구가 늘어나고 있으며, 이는 주로 Learning and Instruction 저널에서 다루어진다. 학습자의 성취를 높이기 위한 효과적인 피드백 제공 방법이 지속적으로 강조되고 있다.</div>
                 <div class="trend-evidence">근거: ‘Effects of peer feedback and self-assessment on writing’, ‘Feedback source and target matter: Students’ social-psychological perceptions in online asynchronous courses’</div>
+                
               </div>
             </div>
             <div class="trend-card">
@@ -268,6 +278,7 @@ body{background:var(--bg);color:var(--txt);font-family:'Segoe UI',system-ui,sans
                 <div class="trend-title">협동 학습 및 자기 조절 학습의 중요성</div>
                 <div class="trend-desc">교육 현장에서 협동 학습과 자기 조절 학습이 중요한 주제로 다뤄지고 있으며, 이를 통해 학습자 중심의 접근이 확대되고 있다. 관련 논문들은 다양한 교육 효과를 증명하고 있다.</div>
                 <div class="trend-evidence">근거: ‘Connecting joint visual attention, community belonging, and self-efficacy in makerspace environments’, ‘Regarding caveats on reliability evidence’</div>
+                
               </div>
             </div>
             <div class="trend-card">
@@ -276,6 +287,7 @@ body{background:var(--bg);color:var(--txt);font-family:'Segoe UI',system-ui,sans
                 <div class="trend-title">AI 윤리에 대한 논의</div>
                 <div class="trend-desc">AI 기술이 교육에 미치는 영향에 대한 윤리적 논의가 활발해지고 있다. 이와 관련된 연구들은 AI 시스템 사용 시의 윤리적 고려사항을 다루며, British Journal of Educational Technology에서 주로 발표되고 있다.</div>
                 <div class="trend-evidence">근거: ‘When machines join the moral circle: The persona effect of generative AI agents in collaborations’, ‘Development and evaluation of artificial intelligence literacy training for teacher education students’</div>
+                
               </div>
             </div>
 </div>
@@ -424,5 +436,15 @@ body{background:var(--bg);color:var(--txt);font-family:'Segoe UI',system-ui,sans
 </div>
 
 </div>
+
+<script>
+function toggleDetail(i) {
+  const el  = document.getElementById('td-' + i);
+  const btn = document.getElementById('btn-' + i);
+  const open = el.style.display === 'none';
+  el.style.display  = open ? 'block' : 'none';
+  btn.textContent   = open ? '접기 ▴' : '상세히 보기 ▾';
+}
+</script>
 </body>
 </html>
