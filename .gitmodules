@@ -1,0 +1,3 @@
+[submodule "scripts/hwpx-skill"]
+	path = scripts/hwpx-skill
+	url = https://github.com/jkf87/hwpx-skill
