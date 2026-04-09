@@ -72,31 +72,63 @@ def hwp_to_hwpx(hwp_path: Path, out_dir: Path) -> Path | None:
 
 
 def extract_text(hwpx_path: Path) -> str | None:
-    """HWPX에서 마크다운 텍스트 추출"""
+    """HWPX에서 마크다운 텍스트 추출 (임시 파일 경유로 CP949/UTF-8 충돌 방지)"""
+    import tempfile
+    with tempfile.NamedTemporaryFile(suffix=".md", delete=False, mode="w", encoding="utf-8") as tmp:
+        tmp_path = Path(tmp.name)
+
     cmd = [
         sys.executable,
         str(HWPX_SKILL / "text_extract.py"),
         str(hwpx_path),
-        "--format", "markdown"
+        "--format", "markdown",
+        "--output", str(tmp_path)
     ]
     try:
-        result = subprocess.run(
-            cmd, capture_output=True, text=True, encoding="utf-8", timeout=60
-        )
-        if result.returncode == 0 and result.stdout.strip():
-            return result.stdout
-        else:
-            print(f"    [추출 실패] {hwpx_path.name}: {result.stderr[:150]}")
-            return None
+        result = subprocess.run(cmd, capture_output=True, timeout=60)
+        if result.returncode == 0 and tmp_path.exists():
+            content = tmp_path.read_text(encoding="utf-8")
+            tmp_path.unlink(missing_ok=True)
+            if content.strip():
+                return content
+        print(f"    [추출 실패] {hwpx_path.name}: {result.stderr[:150]}")
+        tmp_path.unlink(missing_ok=True)
+        return None
     except Exception as e:
         print(f"    [오류] {hwpx_path.name}: {e}")
+        tmp_path.unlink(missing_ok=True)
         return None
+
+
+def dedup_nested_lines(content: str) -> str:
+    """HWPX 추출 시 테이블 셀이 중복 출력되는 문제 제거.
+
+    text_extract.py --format markdown 은 테이블 셀을 일반 텍스트로 한 번,
+    2-space 들여쓰기 네스티드로 또 한 번 출력한다.
+    동일 내용이 인접한 경우 들여쓰기 버전을 제거.
+    """
+    lines = content.split("\n")
+    flat = [l.strip() for l in lines]
+    result = []
+    for i, line in enumerate(lines):
+        stripped = line.strip()
+        if line.startswith("  ") and stripped:
+            # 앞쪽 비들여쓰기 구간에 동일 내용이 있으면 중복
+            prev_flat = flat[max(0, i - len(lines)):i]
+            if stripped in prev_flat:
+                continue
+        result.append(line)
+    return "\n".join(result)
 
 
 def wrap_frontmatter(content: str, source_file: Path, original_ext: str) -> str:
     """추출된 텍스트에 wiki 프론트매터 추가"""
     date = datetime.now().strftime("%Y-%m-%d")
-    title = source_file.stem.replace("-", " ").replace("_", " ")
+    # 첫 줄을 실제 제목으로 활용 (있는 경우)
+    first_line = content.strip().split("\n")[0].strip() if content.strip() else ""
+    title = first_line if first_line else source_file.stem.replace("-", " ").replace("_", " ")
+    # 중복 테이블 셀 제거
+    content = dedup_nested_lines(content)
 
     header = f"""---
 type: raw-paper
@@ -174,8 +206,15 @@ def batch_ingest(source_dir: Path) -> None:
     if not check_hwpx_skill():
         sys.exit(1)
 
-    files = list(source_dir.glob("*.hwp")) + list(source_dir.glob("*.hwpx"))
-    files += list(source_dir.glob("*.HWP")) + list(source_dir.glob("*.HWPX"))
+    # case-insensitive 수집 후 중복 제거 (Windows 대소문자 무감)
+    seen = set()
+    files = []
+    for pat in ("*.hwp", "*.hwpx", "*.HWP", "*.HWPX"):
+        for f in source_dir.glob(pat):
+            key = f.resolve()
+            if key not in seen:
+                seen.add(key)
+                files.append(f)
 
     if not files:
         print(f"[정보] {source_dir}에 HWP/HWPX 파일이 없습니다.")

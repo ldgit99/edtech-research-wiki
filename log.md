@@ -66,3 +66,20 @@
 - [FIX] 깨진 wikilink 1개 수정 (learning-analytics.md, shane-dawson.md)
 - [UPDATE] wiki/index.md 갱신 (35페이지, 연구자 9명)
 - [UPDATE] DASHBOARD.md Phase 3 반영
+- [2026-04-09 21:50] [HWPX-INGEST-START] 소스=D:\OneDrive\Documents\Obsidian Vault\03-Resources\edtech-research\raw\attachments\test-folder, 파일수=2
+- [2026-04-09 21:50] [HWPX-INGEST-DONE] 성공=0/2
+- [2026-04-09 21:51] [HWPX-INGEST-START] 소스=raw\attachments\test-folder, 파일수=2
+- [2026-04-09 21:51] [HWPX-INGEST-DONE] 성공=2/2
+- [2026-04-09 21:51] [HWPX-INGEST-START] 소스=raw\attachments\test-folder, 파일수=2
+- [2026-04-09 21:51] [HWPX-INGEST-DONE] 성공=2/2
+- [2026-04-09 21:52] [HWPX-INGEST-START] 소스=raw\attachments, 파일수=1
+- [2026-04-09 21:52] [HWPX-INGEST-DONE] 성공=1/1
+
+## 2026-04-09 (HWPX 파이프라인 수정)
+
+- [FIX] hwpx_batch_ingest.py: extract_text()에서 subprocess stdout 인코딩 버그 수정
+  (Windows CP949/UTF-8 충돌 → 임시 파일 경유 방식으로 변경)
+- [FIX] hwpx_batch_ingest.py: 테이블 셀 중복 출력 제거 (dedup_nested_lines 추가)
+- [FIX] hwpx_batch_ingest.py: Windows 대소문자 glob 중복 처리
+- [IMPROVE] wrap_frontmatter: 파일명 대신 문서 첫 줄을 제목으로 사용
+- [TEST] MD→HWPX→MD 파이프라인 전체 검증 완료 (한국어 정상 추출 확인)
