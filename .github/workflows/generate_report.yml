@@ -38,7 +38,7 @@ jobs:
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+          git pull --rebase origin master
           git add report.html dashboard.html scripts/.report_cache.json scripts/.research_questions.json || true
           git diff --cached --quiet || git commit -m "chore: 보고서·대시보드 자동 갱신 $(date +'%Y-%m-%d')"
-          git pull --rebase origin master
           git push
