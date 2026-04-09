@@ -57,3 +57,12 @@
 - [UPDATE] wiki/syntheses/synthesis-2026-04-09.md 생성 (합성 분석 공식 위치 등록)
 - [UPDATE] wiki/index.md 갱신 (33페이지, 8명 연구자, 2개 논쟁)
 - [UPDATE] DASHBOARD.md Phase 3 반영
+
+## 2026-04-09 (4차 확장 세션)
+
+- [COMPILE] 4차 확장: 2개 wiki 페이지 추가 생성
+  - concepts/: social-robots-in-education
+  - researchers/: dragan-gasevic
+- [FIX] 깨진 wikilink 1개 수정 (learning-analytics.md, shane-dawson.md)
+- [UPDATE] wiki/index.md 갱신 (35페이지, 연구자 9명)
+- [UPDATE] DASHBOARD.md Phase 3 반영

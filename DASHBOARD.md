@@ -14,11 +14,11 @@ updated: 2026-04-09
 | 항목 | 값 |
 |---|---|
 | **단계** | Phase 3 — 심화 확장 진행 중 |
-| **wiki 페이지 총수** | **33** |
-| **개념(Concepts)** | 19 |
+| **wiki 페이지 총수** | **35** |
+| **개념(Concepts)** | 20 |
 | **이론(Theories)** | 2 |
 | **방법론(Methodologies)** | 2 |
-| **연구자(Researchers)** | 8 |
+| **연구자(Researchers)** | 9 |
 | **논쟁(Debates)** | 2 |
 | **합성 분석** | 1편 (wiki/syntheses/) |
 | **inbox 논문** | 0편 대기 (184편 전체 완료) |

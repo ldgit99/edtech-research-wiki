@@ -53,7 +53,7 @@ language: both
 
 ### 5. 생성형 AI 역량 심화
 - 21세기 역량 측정 및 분석에 LA + GenAI 결합
-- 관련 논문: [[raw/inbox/2026-02-25-openalex-advancing-21st-century-professional-comp.md]]
+- 관련 논문: [[raw/inbox/2026-03-30-openalex-advancing-21st-century-professional-comp.md]]
 - [[raw/inbox/2026-03-15-openalex-assessing-21st-century-competencies.md]]
 
 ---

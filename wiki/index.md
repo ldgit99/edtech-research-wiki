@@ -2,14 +2,14 @@
 type: index
 created: 2026-04-09
 updated: 2026-04-09
-total-pages: 33
+total-pages: 35
 total-sources: 184
 last-compiled: 2026-04-09
 ---
 
 # EDTECH RESEARCH WIKI — 인덱스
 
-> 마지막 컴파일: 2026-04-09 | 총 33페이지 | 소스 184편 전체 컴파일 완료 ✓
+> 마지막 컴파일: 2026-04-09 | 총 35페이지 | 소스 184편 전체 컴파일 완료 ✓
 
 ---
 
@@ -17,10 +17,10 @@ last-compiled: 2026-04-09
 
 | 카테고리 | 페이지 수 | 링크 |
 |---|---|---|
-| 개념 (Concepts) | 19 | [→ 아래](#개념-concepts) |
+| 개념 (Concepts) | 20 | [→ 아래](#개념-concepts) |
 | 이론 (Theories) | 2 | [→ 아래](#이론-theories) |
 | 방법론 (Methodologies) | 2 | [→ 아래](#방법론-methodologies) |
-| 연구자 (Researchers) | 8 | [→ 아래](#연구자-researchers) |
+| 연구자 (Researchers) | 9 | [→ 아래](#연구자-researchers) |
 | 논쟁 (Debates) | 2 | [→ 아래](#논쟁-debates) |
 
 ---
@@ -48,6 +48,7 @@ last-compiled: 2026-04-09
 | [[concepts/human-ai-collaboration]] | 학습 목표를 위한 인간-AI 협력 패턴 | 6 |
 | [[concepts/ai-ethics-in-education]] | 교육 AI의 공정성·프라이버시·투명성 윤리 | 6 |
 | [[concepts/neuroscience-in-education]] | 뇌과학 방법론으로 학습 과정 탐구 | 5 |
+| [[concepts/social-robots-in-education]] | 물리적 소셜 로봇의 교수학습 적용 | 2 |
 
 ---
 
@@ -81,6 +82,7 @@ last-compiled: 2026-04-09
 | [[researchers/isabel-hilliger]] | PUC Chile | LA 제도화, 학생 성공 |
 | [[researchers/mohammed-saqr]] | University of Eastern Finland | LA, 소셜 네트워크 분석, 인간-AI 협력 |
 | [[researchers/ryan-baker]] | University of Pennsylvania | EDM, 학습자 모델링, AIED |
+| [[researchers/dragan-gasevic]] | Monash University | LA, AI 피드백, 인간-AI 협력 |
 
 ---
 

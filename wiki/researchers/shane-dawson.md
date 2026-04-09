@@ -34,7 +34,7 @@ Shane Dawson은 **학습 분석학(Learning Analytics)** 분야에서 가장 영
 - 학습자 진전도 추적 연구
 
 관련 소스:
-- [[raw/inbox/2026-02-25-openalex-advancing-21st-century-professional-comp.md]]
+- [[raw/inbox/2026-03-30-openalex-advancing-21st-century-professional-comp.md]]
 - [[raw/inbox/2026-03-15-openalex-assessing-21st-century-competencies.md]]
 - [[raw/inbox/2026-03-15-openalex-assessing-patterns-of-students--attainme.md]]
 
