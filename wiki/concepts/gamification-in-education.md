@@ -4,7 +4,7 @@ summary: 게임 요소(포인트·배지·리더보드 등)를 비게임 교육 
 tags: [#instructional-design, #technology-integration, #assessment, #learning-theory]
 created: 2026-04-09
 updated: 2026-04-09
-source-count: 3
+source-count: 4
 language: both
 ---
 
@@ -65,3 +65,4 @@ language: both
 
 - [[raw/inbox/2026-01-27-openalex-beyond-points-and-badges--systematic-des.md]]
 - [[raw/inbox/2026-03-07-openalex-designing-conversational-agents-for-adap.md]]
+- [[raw/inbox/2026-04-04-openalex-serious-games-based-on-scripted-mystery.md]]

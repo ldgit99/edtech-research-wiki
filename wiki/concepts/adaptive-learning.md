@@ -4,7 +4,7 @@ summary: 학습자의 현재 수준·행동·맥락에 따라 학습 경로·내
 tags: [#ai-education, #instructional-design, #learning-analytics, #assessment]
 created: 2026-04-09
 updated: 2026-04-09
-source-count: 5
+source-count: 6
 language: both
 ---
 

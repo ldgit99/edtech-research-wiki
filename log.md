@@ -37,3 +37,13 @@
 - [UPDATE] wiki/index.md 갱신 (29페이지 목록)
 - [UPDATE] DASHBOARD.md 현황 반영 (Phase 2 완료)
 - [SCRIPT] scripts/compile_batch2.py 생성 및 실행
+- [2026-04-09 21:33] [COLLECT-START] days_back=7
+- [2026-04-09 21:33] [COLLECT-DONE] 신규=9편, inbox총=184편
+
+## 2026-04-09 (수집 및 합성 세션)
+
+- [COLLECT] collect_all.py 실행: 신규 9편 수집 (OpenAlex 10편 시도, arXiv 43편 시도)
+  - inbox 총계: 175 → 184편
+- [COMPILE] 신규 9편 compiled: true 표시 (전체 184편 완료)
+- [UPDATE] wiki 페이지 소스 수 갱신 (feedback+2, gamification+1, adaptive+1, human-ai+1, ai-tutoring+1)
+- [SYNTHESIS] outputs/synthesis-2026-04-09.md 생성 (크로스 테마 합성 분석)
