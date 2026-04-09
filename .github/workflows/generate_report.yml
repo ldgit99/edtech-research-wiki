@@ -5,6 +5,10 @@ on:
     - cron: '0 22 * * 1'   # 매주 화요일 07:00 KST (= UTC 22:00 월)
   workflow_dispatch:         # 수동 실행 버튼
 
+concurrency:
+  group: generate-report
+  cancel-in-progress: false
+
 permissions:
   contents: write
 
@@ -18,9 +22,6 @@ jobs:
         with:
           ref: master
           fetch-depth: 0
-
-      - name: Pull latest
-        run: git pull origin master
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -44,6 +45,9 @@ jobs:
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add report.html dashboard.html scripts/.report_cache.json scripts/.research_questions.json || true
+          # 최신 remote HEAD를 가져와서 그 위에 생성 파일만 커밋
+          git fetch origin master
+          git reset --soft origin/master
+          git add report.html dashboard.html scripts/.report_cache.json scripts/.research_questions.json
           git diff --cached --quiet || git commit -m "chore: 보고서·대시보드 자동 갱신 $(date +'%Y-%m-%d')"
-          git push || (git pull --rebase origin master && git push)
+          git push
