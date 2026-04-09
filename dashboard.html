@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EdTech Research Wiki — Dashboard</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --bg: #0f172a; --surface: #1e293b; --border: #334155;
+    --text: #f1f5f9; --muted: #94a3b8; --accent: #6366f1;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', system-ui, sans-serif;
+         font-size: 14px; line-height: 1.6; }
+  a { color: var(--accent); text-decoration: none; }
+  .container { max-width: 1280px; margin: 0 auto; padding: 24px 20px; }
+
+  /* Header */
+  .header { display: flex; justify-content: space-between; align-items: center;
+             margin-bottom: 28px; padding-bottom: 16px; border-bottom: 1px solid var(--border); }
+  .header h1 { font-size: 20px; font-weight: 700; }
+  .header h1 span { color: var(--accent); }
+  .last-updated { font-size: 12px; color: var(--muted); }
+
+  /* Stat cards */
+  .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                 gap: 12px; margin-bottom: 28px; }
+  .stat-card { background: var(--surface); border: 1px solid var(--border);
+                border-radius: 10px; padding: 16px; }
+  .stat-card .label { font-size: 11px; color: var(--muted); text-transform: uppercase;
+                        letter-spacing: .05em; margin-bottom: 6px; }
+  .stat-card .value { font-size: 32px; font-weight: 700; }
+  .stat-card .sub { font-size: 11px; color: var(--muted); margin-top: 2px; }
+  .accent { color: #6366f1; } .green { color: #10b981; } .amber { color: #f59e0b; }
+  .red { color: #ef4444; } .blue { color: #3b82f6; }
+
+  /* Charts row */
+  .charts-row { display: grid; grid-template-columns: 280px 1fr; gap: 16px; margin-bottom: 28px; }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 18px; }
+  .card-title { font-size: 13px; font-weight: 600; margin-bottom: 14px; color: var(--muted);
+                 text-transform: uppercase; letter-spacing: .05em; }
+  .chart-wrap { position: relative; height: 220px; }
+
+  /* Bottom row */
+  .bottom-row { display: grid; grid-template-columns: 1fr 360px; gap: 16px; }
+
+  /* Table */
+  .table-scroll { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; }
+  thead th { font-size: 11px; font-weight: 600; color: var(--muted); text-transform: uppercase;
+              letter-spacing: .04em; padding: 8px 12px; text-align: left;
+              border-bottom: 1px solid var(--border); }
+  tbody tr { border-bottom: 1px solid #1e293b; transition: background .15s; }
+  tbody tr:hover { background: #ffffff08; }
+  td { vertical-align: middle; }
+  .badge { display: inline-block; padding: 2px 7px; border-radius: 99px;
+            font-size: 10px; font-weight: 600; color: #fff; white-space: nowrap; }
+  .src-badge { display: inline-block; background: #1e3a5f; color: #60a5fa;
+                padding: 1px 8px; border-radius: 99px; font-size: 12px; font-weight: 600; }
+  .title-cell { font-weight: 500; max-width: 200px; white-space: nowrap;
+                 overflow: hidden; text-overflow: ellipsis; }
+  .summary-cell { max-width: 280px; white-space: nowrap; overflow: hidden;
+                   text-overflow: ellipsis; }
+  .text-gray { color: var(--muted); }
+  .text-small { font-size: 12px; }
+  .text-center { text-align: center; }
+
+  /* Log */
+  .log-entry { display: flex; align-items: baseline; gap: 8px; padding: 8px 0;
+                border-bottom: 1px solid #1e293b; }
+  .log-entry:last-child { border-bottom: none; }
+  .log-tag { flex-shrink: 0; display: inline-block; padding: 1px 6px; border-radius: 4px;
+              font-size: 10px; font-weight: 700; color: #fff; }
+  .log-msg { flex: 1; font-size: 13px; color: var(--text); }
+  .log-date { flex-shrink: 0; font-size: 11px; color: var(--muted); }
+
+  /* Inbox progress */
+  .progress-bar { background: #334155; border-radius: 99px; height: 6px; margin: 8px 0 4px; }
+  .progress-fill { height: 6px; border-radius: 99px; background: #10b981; }
+
+  @media (max-width: 900px) {
+    .charts-row { grid-template-columns: 1fr; }
+    .bottom-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Header -->
+  <div class="header">
+    <h1>EdTech Research Wiki <span>Dashboard</span></h1>
+    <span class="last-updated">마지막 갱신: 2026-04-09 22:12</span>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="label">총 Wiki 페이지</div>
+      <div class="value accent">35</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">총 소스 논문</div>
+      <div class="value green">160</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">개념 페이지</div>
+      <div class="value blue">20</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">연구자 페이지</div>
+      <div class="value amber">9</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">논쟁/Debate</div>
+      <div class="value red">2</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">Inbox 처리</div>
+      <div class="value" style="color:#10b981">184</div>
+      <div class="sub">미처리: 0편</div>
+      <div class="progress-bar">
+        <div class="progress-fill" style="width:100%"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Charts -->
+  <div class="charts-row">
+    <div class="card">
+      <div class="card-title">페이지 유형 분포</div>
+      <div class="chart-wrap">
+        <canvas id="donutChart"></canvas>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">소스 수 상위 15 페이지</div>
+      <div class="chart-wrap">
+        <canvas id="barChart"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom: table + log -->
+  <div class="bottom-row">
+    <div class="card">
+      <div class="card-title">Wiki 페이지 목록</div>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th>유형</th><th>제목</th><th>요약</th>
+              <th style="text-align:center">소스</th><th>갱신일</th>
+            </tr>
+          </thead>
+          <tbody>
+        <tr>
+          <td class="py-2 px-3">
+            <span class="badge" style="background:#6366f1">개념</span>
+          </td>
+          <td class="py-2 px-3 title-cell">교육에서의 생성형 AI (Generative AI in Education)</td>
+          <td class="py-2 px-3 summary-cell text-gray">LLM 등 생성형 AI를 교수학습 맥락에 적용하는 연구 및 실천 영역</td>
+          <td class="py-2 px-3 text-center">
+            <span class="src-badge">18</span>
+          </td>
+          <td class="py-2 px-3 text-gray text-small">2026-04-09</td>
+        </tr>
+        <tr>
+          <td class="py-2 px-3">
+            <span class="badge" style="background:#6366f1">개념</span>
+          </td>
+          <td class="py-2 px-3 title-cell">학습 분석학 (Learning Analytics)</td>
+          <td class="py-2 px-3 summary-cell text-gray">학습자 데이터를 측정·수집·분석하여 학습과 교육환경을 최적화하는 연구 및 실천</td>
+          <td class="py-2 px-3 text-center">
+            <span class="src-badge">14</span>
+          </td>
+          <td class="py-2 px-3 text-gray text-small">2026-04-09</td>
+        </tr>
+        <tr>
+          <td class="py-2 px-3">
+            <span class="badge" style="background:#6366f1">개념</span>
+          </td>
+          <td class="py-2 px-3 title-cell">피드백 (Feedback in Learning)</td>
+          <td class="py-2 px-3 summary-cell text-gray">학습자의 수행에 대한 정보를 제공하여 이해를 심화하고 학습 방향을 조정하게 하는 교수학습 핵심 메커니즘</td>
+          <td class="py-2 px-3 text-center">
+            <span class="src-badge">11</span>
+          </td>
+          <td class="py-2 px-3 text-gray text-small">2026-04-09</td>
+        </tr>
+        <tr>
+          <td class="py-2 px-3">
+            <span class="badge" style="background:#6366f1">개념</span>
+          </td>
+          <td class="py-2 px-3 title-cell">협동학습 (Collaborative Learning)</td>
+          <td class="py-2 px-3 summary-cell text-gray">학습자들이 공동의 목표를 향해 상호작용하며 지식을 공동 구성하는 학습 형태</td>
+          <td class="py-2 px-3 text-center">
+            <span class="src-badge">10</span>
+          </td>
+          <td class="py-2 px-3 text-gray text-small">2026-04-09</td>
+        </tr>
+        <tr>
+          <td class="py-2 px-3">
+            <span class="badge" style="background:#6366f1">개념</span>
+          </td>
+          <td class="py-2 px-3 title-cell">자기조절학습 (Self-Regulated Learning, SRL)</td>
+          <td class="py-2 px-3 summary-cell text-gray">학습자가 목표 설정·전략 선택·자기 모니터링·반성을 통해 학습을 스스로 조절하는 능동적 과정</td>
+          <td class="py-2 px-3 text-center">
+            <span class="src-badge">8</span>
+          </td>
+          <td class="py-2 px-3 text-gray text-small">2026-04-09</td>
+        </tr>
+        <tr>
+          <td class="py-2 px-3">
+            <span class="badge" style="background:#6366f1">개념</span>
+          </td>
+          <td class="py-2 px-3 title-cell">교사 전문성 개발 (Teacher Professional Development, TPD)</td>
+          <td class="py-2 px-3 summary-cell text-gray">교사가 전문적 역량을 지속적으로 발전시키는 학습 과정으로, AI 통합·디지털 전환 시대에 재정의되고 있음</td>
+          <td class="py-2 px-3 text-center">
+            <span class="src-badge">8</span>
+          </td>
+          <td class="py-2 px-3 text-gray text-small">2026-04-09</td>
+        </tr>
+        <tr>
+          <td class="py-2 px-3">
+            <span class="badge" style="background:#6366f1">개념</span>
+          </td>
+          <td class="py-2 px-3 title-cell">인간-AI 협력 (Human-AI Collaboration)</td>
+          <td class="py-2 px-3 summary-cell text-gray">인간과 AI가 학습·작업 목표를 위해 협력하는 과정, 역할 분담, 상호작용 패턴에 관한 연구 영역</td>
+          <td class="py-2 px-3 text-center">
+            <span class="src-badge">7</span>
+          </td>
+          <td class="py-2 px-3 text-gray text-small">2026-04-09</td>
+        </tr>
+        <tr>
+          <td class="py-2 px-3">
+            <span class="badge" style="background:#6366f1">개념</span>
+          </td>
+          <td class="py-2 px-3 title-cell">멀티모달 학습 분석학 (Multimodal Learning Analytics)</td>
+          <td class="py-2 px-3 summary-cell text-gray">시선추적·생체신호·동작·음성 등 다채널 데이터를 통합하여 학습 과정을 분석하는 방법론</td>
+          <td class="py-2 px-3 text-center">
+            <span class="src-badge">7</span>
+          </td>
+          <td class="py-2 px-3 text-gray text-small">2026-04-09</td>
+        </tr>
+        <tr>
+          <td class="py-2 px-3">
+            <span class="badge" style="background:#6366f1">개념</span>
+          </td>
+          <td class="py-2 px-3 title-cell">적응형 학습 (Adaptive Learning)</td>
+          <td class="py-2 px-3 summary-cell text-gray">학습자의 현재 수준·행동·맥락에 따라 학습 경로·내용·지원을 동적으로 조정하는 학습 시스템</td>
+          <td class="py-2 px-3 text-center">
+            <span class="src-badge">6</span>
+          </td>
+          <td class="py-2 px-3 text-gray text-small">2026-04-09</td>
+        </tr>
+        <tr>
+          <td class="py-2 px-3">
+            <span class="badge" style="background:#6366f1">개념</span>
+          </td>
+          <td class="py-2 px-3 title-cell">교육 AI 윤리 (AI Ethics in Education)</td>
+          <td class="py-2 px-3 summary-cell text-gray">교육 맥락에서 AI 사용의 윤리적 원칙, 위험, 규범적 프레임워크에 관한 연구 영역</td>
+          <td class="py-2 px-3 text-center">
+            <span class="src-badge">6</span>
+          </td>
+          <td class="py-2 px-3 text-gray text-small">2026-04-09</td>
+        </tr>
+        <tr>
+          <td class="py-2 px-3">
+            <span class="badge" style="background:#6366f1">개념</span>
+          </td>
+          <td class="py-2 px-3 title-cell">AI 리터러시 (AI Literacy)</td>
+          <td class="py-2 px-3 summary-cell text-gray">AI 시스템을 이해하고 비판적으로 활용하며 윤리적으로 판단할 수 있는 역량 체계</td>
+          <td class="py-2 px-3 text-center">
+            <span class="src-badge">6</span>
+          </td>
+          <td class="py-2 px-3 text-gray text-small">2026-04-09</td>
+        </tr>
+        <tr>
+          <td class="py-2 px-3">
+            <span class="badge" style="background:#6366f1">개념</span>
+          </td>
+          <td class="py-2 px-3 title-cell">AI 튜터링 시스템 (AI Tutoring Systems)</td>
+          <td class="py-2 px-3 summary-cell text-gray">개별 학습자의 상태를 진단하고 적응적 피드백과 힌트를 제공하는 AI 기반 교수 시스템</td>
+          <td class="py-2 px-3 text-center">
+            <span class="src-badge">6</span>
+          </td>
+          <td class="py-2 px-3 text-gray text-small">2026-04-09</td>
+        </tr>
+        <tr>
+          <td class="py-2 px-3">
+            <span class="badge" style="background:#6366f1">개념</span>
+          </td>
+          <td class="py-2 px-3 title-cell">학습자 참여 (Student Engagement)</td>
+          <td class="py-2 px-3 summary-cell text-gray">학습자가 학습 활동에 인지적·행동적·정서적으로 참여하는 정도 및 과정</td>
+          <td class="py-2 px-3 text-center">
+            <span class="src-badge">6</span>
+          </td>
+          <td class="py-2 px-3 text-gray text-small">2026-04-09</td>
+        </tr>
+        <tr>
+          <td class="py-2 px-3">
+            <span class="badge" style="background:#6366f1">개념</span>
+          </td>
+          <td class="py-2 px-3 title-cell">교육에서의 가상현실 (Virtual Reality in Education)</td>
+          <td class="py-2 px-3 summary-cell text-gray">몰입형 3D 가상환경을 활용한 체험 기반 학습으로, 위험 시뮬레이션·관점 전환·공간 학습에 효과적</td>
+          <td class="py-2 px-3 text-center">
+            <span class="src-badge">6</span>
+          </td>
+          <td class="py-2 px-3 text-gray text-small">2026-04-09</td>
+        </tr>
+        <tr>
+          <td class="py-2 px-3">
+            <span class="badge" style="background:#6366f1">개념</span>
+          </td>
+          <td class="py-2 px-3 title-cell">교육에서의 감정 컴퓨팅 (Affective Computing in Education)</td>
+          <td class="py-2 px-3 summary-cell text-gray">학습자의 감정·생리적 상태를 인식·해석하여 학습 지원에 활용하는 기술 및 연구 영역</td>
+          <td class="py-2 px-3 text-center">
+            <span class="src-badge">5</span>
+          </td>
+          <td class="py-2 px-3 text-gray text-small">2026-04-09</td>
+        </tr>
+        <tr>
+          <td class="py-2 px-3">
+            <span class="badge" style="background:#6366f1">개념</span>
+          </td>
+          <td class="py-2 px-3 title-cell">컴퓨팅 사고력 (Computational Thinking)</td>
+          <td class="py-2 px-3 summary-cell text-gray">문제를 컴퓨터가 처리 가능한 방식으로 분해·추상화·알고리즘화하는 사고 역량</td>
+          <td class="py-2 px-3 text-center">
+            <span class="src-badge">5</span>
+          </td>
+          <td class="py-2 px-3 text-gray text-small">2026-04-09</td>
+        </tr>
+        <tr>
+          <td class="py-2 px-3">
+            <span class="badge" style="background:#6366f1">개념</span>
+          </td>
+          <td class="py-2 px-3 title-cell">교육 형평성 (Equity in Education)</td>
+          <td class="py-2 px-3 summary-cell text-gray">사회적 배경·장애·지역·언어에 관계없이 양질의 교육 기회를 보장하는 원칙과 실천</td>
+          <td class="py-2 px-3 text-center">
+            <span class="src-badge">5</span>
+          </td>
+          <td class="py-2 px-3 text-gray text-small">2026-04-09</td>
+        </tr>
+        <tr>
+          <td class="py-2 px-3">
+            <span class="badge" style="background:#6366f1">개념</span>
+          </td>
+          <td class="py-2 px-3 title-cell">교육 신경과학 (Neuroscience in Education)</td>
+          <td class="py-2 px-3 summary-cell text-gray">뇌과학적 방법론과 발견을 교수학습 설계 및 실천에 연결하는 연구 영역</td>
+          <td class="py-2 px-3 text-center">
+            <span class="src-badge">5</span>
+          </td>
+          <td class="py-2 px-3 text-gray text-small">2026-04-09</td>
+        </tr>
+        <tr>
+          <td class="py-2 px-3">
+            <span class="badge" style="background:#3b82f6">방법론</span>
+          </td>
+          <td class="py-2 px-3 title-cell">체계적 문헌 검토 (Systematic Review)</td>
+          <td class="py-2 px-3 summary-cell text-gray">사전 정의된 프로토콜에 따라 기존 연구를 체계적으로 검색·선별·합성하는 문헌 검토 방법론</td>
+          <td class="py-2 px-3 text-center">
+            <span class="src-badge">5</span>
+          </td>
+          <td class="py-2 px-3 text-gray text-small">2026-04-09</td>
+        </tr>
+        <tr>
+          <td class="py-2 px-3">
+            <span class="badge" style="background:#6366f1">개념</span>
+          </td>
+          <td class="py-2 px-3 title-cell">교육에서의 게이미피케이션 (Gamification in Education)</td>
+          <td class="py-2 px-3 summary-cell text-gray">게임 요소(포인트·배지·리더보드 등)를 비게임 교육 맥락에 적용하여 동기와 참여를 높이는 설계 전략</td>
+          <td class="py-2 px-3 text-center">
+            <span class="src-badge">4</span>
+          </td>
+          <td class="py-2 px-3 text-gray text-small">2026-04-09</td>
+        </tr>
+        <tr>
+          <td class="py-2 px-3">
+            <span class="badge" style="background:#3b82f6">방법론</span>
+          </td>
+          <td class="py-2 px-3 title-cell">설계 기반 연구 (Design-Based Research, DBR)</td>
+          <td class="py-2 px-3 summary-cell text-gray">교육 이론과 실천을 동시에 개선하기 위한 반복적 설계·실행·분석·재설계 사이클로 구성된 연구 방법론</td>
+          <td class="py-2 px-3 text-center">
+            <span class="src-badge">4</span>
+          </td>
+          <td class="py-2 px-3 text-gray text-small">2026-04-09</td>
+        </tr>
+        <tr>
+          <td class="py-2 px-3">
+            <span class="badge" style="background:#f59e0b">이론</span>
+          </td>
+          <td class="py-2 px-3 title-cell">TPACK (Technological Pedagogical Content Knowledge)</td>
+          <td class="py-2 px-3 summary-cell text-gray">교사가 효과적인 기술 통합 수업을 위해 기술·교육학·내용 지식을 통합적으로 갖춰야 함을 설명하는 프레임워크</td>
+          <td class="py-2 px-3 text-center">
+            <span class="src-badge">4</span>
+          </td>
+          <td class="py-2 px-3 text-gray text-small">2026-04-09</td>
+        </tr>
+        <tr>
+          <td class="py-2 px-3">
+            <span class="badge" style="background:#6366f1">개념</span>
+          </td>
+          <td class="py-2 px-3 title-cell">교육용 소셜 로봇 (Social Robots in Education)</td>
+          <td class="py-2 px-3 summary-cell text-gray">교육 현장에서 학습자와 물리적·사회적으로 상호작용하는 로봇의 교수학습 적용</td>
+          <td class="py-2 px-3 text-center">
+            <span class="src-badge">2</span>
+          </td>
+          <td class="py-2 px-3 text-gray text-small">2026-04-09</td>
+        </tr>
+        <tr>
+          <td class="py-2 px-3">
+            <span class="badge" style="background:#f59e0b">이론</span>
+          </td>
+          <td class="py-2 px-3 title-cell">성장 마인드셋 (Growth Mindset)</td>
+          <td class="py-2 px-3 summary-cell text-gray">지능과 능력은 노력으로 성장할 수 있다는 믿음이 학습 동기와 회복탄력성에 영향한다는 이론</td>
+          <td class="py-2 px-3 text-center">
+            <span class="src-badge">2</span>
+          </td>
+          <td class="py-2 px-3 text-gray text-small">2026-04-09</td>
+        </tr>
+        <tr>
+          <td class="py-2 px-3">
+            <span class="badge" style="background:#ef4444">논쟁</span>
+          </td>
+          <td class="py-2 px-3 title-cell">논쟁: GenAI와 창의성</td>
+          <td class="py-2 px-3 summary-cell text-gray">생성형 AI가 학습자의 창의성을 향상시키는가, 아니면 저해하는가에 관한 교육공학적 논쟁</td>
+          <td class="py-2 px-3 text-center">
+            <span class="src-badge">0</span>
+          </td>
+          <td class="py-2 px-3 text-gray text-small">2026-04-09</td>
+        </tr>
+        <tr>
+          <td class="py-2 px-3">
+            <span class="badge" style="background:#ef4444">논쟁</span>
+          </td>
+          <td class="py-2 px-3 title-cell">논쟁: AI 피드백 vs. 인간 피드백</td>
+          <td class="py-2 px-3 summary-cell text-gray">AI 피드백이 인간(교사/전문가) 피드백을 대체할 수 있는가를 둘러싼 교육공학적 논쟁</td>
+          <td class="py-2 px-3 text-center">
+            <span class="src-badge">0</span>
+          </td>
+          <td class="py-2 px-3 text-gray text-small">2026-04-09</td>
+        </tr>
+        <tr>
+          <td class="py-2 px-3">
+            <span class="badge" style="background:#10b981">연구자</span>
+          </td>
+          <td class="py-2 px-3 title-cell">Bertrand Schneider</td>
+          <td class="py-2 px-3 summary-cell text-gray">신경과학·생체신호 기반 멀티모달 학습 분석 및 체화 학습 연구자, Harvard 소속</td>
+          <td class="py-2 px-3 text-center">
+            <span class="src-badge">0</span>
+          </td>
+          <td class="py-2 px-3 text-gray text-small">2026-04-09</td>
+        </tr>
+        <tr>
+          <td class="py-2 px-3">
+            <span class="badge" style="background:#10b981">연구자</span>
+          </td>
+          <td class="py-2 px-3 title-cell">Dragan Gašević</td>
+          <td class="py-2 px-3 summary-cell text-gray"></td>
+          <td class="py-2 px-3 text-center">
+            <span class="src-badge">0</span>
+          </td>
+          <td class="py-2 px-3 text-gray text-small">2026-04-09</td>
+        </tr>
+        <tr>
+          <td class="py-2 px-3">
+            <span class="badge" style="background:#10b981">연구자</span>
+          </td>
+          <td class="py-2 px-3 title-cell">Fan Ouyang (欧阳帆)</td>
+          <td class="py-2 px-3 summary-cell text-gray">CSCL 및 멀티모달 학습 분석 전문 연구자, 중국·홍콩 기반</td>
+          <td class="py-2 px-3 text-center">
+            <span class="src-badge">0</span>
+          </td>
+          <td class="py-2 px-3 text-gray text-small">2026-04-09</td>
+        </tr>
+        <tr>
+          <td class="py-2 px-3">
+            <span class="badge" style="background:#10b981">연구자</span>
+          </td>
+          <td class="py-2 px-3 title-cell">Gwo-Jen Hwang (黃國禎)</td>
+          <td class="py-2 px-3 summary-cell text-gray">모바일·게임 기반 학습 및 플립드 러닝 연구의 선도적 대만 교육공학자</td>
+          <td class="py-2 px-3 text-center">
+            <span class="src-badge">0</span>
+          </td>
+          <td class="py-2 px-3 text-gray text-small">2026-04-09</td>
+        </tr>
+        <tr>
+          <td class="py-2 px-3">
+            <span class="badge" style="background:#10b981">연구자</span>
+          </td>
+          <td class="py-2 px-3 title-cell">Isabel Hilliger</td>
+          <td class="py-2 px-3 summary-cell text-gray"></td>
+          <td class="py-2 px-3 text-center">
+            <span class="src-badge">0</span>
+          </td>
+          <td class="py-2 px-3 text-gray text-small">2026-04-09</td>
+        </tr>
+        <tr>
+          <td class="py-2 px-3">
+            <span class="badge" style="background:#10b981">연구자</span>
+          </td>
+          <td class="py-2 px-3 title-cell">Mohammed Saqr</td>
+          <td class="py-2 px-3 summary-cell text-gray"></td>
+          <td class="py-2 px-3 text-center">
+            <span class="src-badge">0</span>
+          </td>
+          <td class="py-2 px-3 text-gray text-small">2026-04-09</td>
+        </tr>
+        <tr>
+          <td class="py-2 px-3">
+            <span class="badge" style="background:#10b981">연구자</span>
+          </td>
+          <td class="py-2 px-3 title-cell">Ryan Baker</td>
+          <td class="py-2 px-3 summary-cell text-gray"></td>
+          <td class="py-2 px-3 text-center">
+            <span class="src-badge">0</span>
+          </td>
+          <td class="py-2 px-3 text-gray text-small">2026-04-09</td>
+        </tr>
+        <tr>
+          <td class="py-2 px-3">
+            <span class="badge" style="background:#10b981">연구자</span>
+          </td>
+          <td class="py-2 px-3 title-cell">Shane Dawson</td>
+          <td class="py-2 px-3 summary-cell text-gray">학습 분석학 분야의 선도적 연구자, Journal of Learning Analytics 창립 기여</td>
+          <td class="py-2 px-3 text-center">
+            <span class="src-badge">0</span>
+          </td>
+          <td class="py-2 px-3 text-gray text-small">2026-04-09</td>
+        </tr>
+        <tr>
+          <td class="py-2 px-3">
+            <span class="badge" style="background:#10b981">연구자</span>
+          </td>
+          <td class="py-2 px-3 title-cell">Wanli Xing</td>
+          <td class="py-2 px-3 summary-cell text-gray"></td>
+          <td class="py-2 px-3 text-center">
+            <span class="src-badge">0</span>
+          </td>
+          <td class="py-2 px-3 text-gray text-small">2026-04-09</td>
+        </tr></tbody>
+        </table>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">최근 활동 로그</div>
+      
+            <div class="log-entry">
+              <span class="log-tag" style="background:#8b5cf6">TEST</span>
+              <span class="log-msg">MD→HWPX→MD 파이프라인 전체 검증 완료 (한국어 정상 추출 확인)</span>
+              <span class="log-date"></span>
+            </div>
+            <div class="log-entry">
+              <span class="log-tag" style="background:#f59e0b">IMPROVE</span>
+              <span class="log-msg">wrap_frontmatter: 파일명 대신 문서 첫 줄을 제목으로 사용</span>
+              <span class="log-date"></span>
+            </div>
+            <div class="log-entry">
+              <span class="log-tag" style="background:#ef4444">FIX</span>
+              <span class="log-msg">hwpx_batch_ingest.py: Windows 대소문자 glob 중복 처리</span>
+              <span class="log-date"></span>
+            </div>
+            <div class="log-entry">
+              <span class="log-tag" style="background:#ef4444">FIX</span>
+              <span class="log-msg">hwpx_batch_ingest.py: 테이블 셀 중복 출력 제거 (dedup_nested_lines 추가)</span>
+              <span class="log-date"></span>
+            </div>
+            <div class="log-entry">
+              <span class="log-tag" style="background:#ef4444">FIX</span>
+              <span class="log-msg">hwpx_batch_ingest.py: extract_text()에서 subprocess stdout 인코딩 버그 수정</span>
+              <span class="log-date"></span>
+            </div>
+            <div class="log-entry">
+              <span class="log-tag" style="background:#64748b">HWPX-INGEST-DONE</span>
+              <span class="log-msg">성공=1/1</span>
+              <span class="log-date">2026-04-09 21:52</span>
+            </div>
+            <div class="log-entry">
+              <span class="log-tag" style="background:#64748b">HWPX-INGEST-START</span>
+              <span class="log-msg">소스=raw\attachments, 파일수=1</span>
+              <span class="log-date">2026-04-09 21:52</span>
+            </div>
+            <div class="log-entry">
+              <span class="log-tag" style="background:#64748b">HWPX-INGEST-DONE</span>
+              <span class="log-msg">성공=2/2</span>
+              <span class="log-date">2026-04-09 21:51</span>
+            </div>
+            <div class="log-entry">
+              <span class="log-tag" style="background:#64748b">HWPX-INGEST-START</span>
+              <span class="log-msg">소스=raw\attachments\test-folder, 파일수=2</span>
+              <span class="log-date">2026-04-09 21:51</span>
+            </div>
+            <div class="log-entry">
+              <span class="log-tag" style="background:#64748b">HWPX-INGEST-DONE</span>
+              <span class="log-msg">성공=2/2</span>
+              <span class="log-date">2026-04-09 21:51</span>
+            </div>
+            <div class="log-entry">
+              <span class="log-tag" style="background:#64748b">HWPX-INGEST-START</span>
+              <span class="log-msg">소스=raw\attachments\test-folder, 파일수=2</span>
+              <span class="log-date">2026-04-09 21:51</span>
+            </div>
+            <div class="log-entry">
+              <span class="log-tag" style="background:#64748b">HWPX-INGEST-DONE</span>
+              <span class="log-msg">성공=0/2</span>
+              <span class="log-date">2026-04-09 21:50</span>
+            </div>
+            <div class="log-entry">
+              <span class="log-tag" style="background:#64748b">HWPX-INGEST-START</span>
+              <span class="log-msg">소스=D:\OneDrive\Documents\Obsidian Vault\03-Resources\edtech-research\raw\attachm</span>
+              <span class="log-date">2026-04-09 21:50</span>
+            </div>
+            <div class="log-entry">
+              <span class="log-tag" style="background:#64748b">UPDATE</span>
+              <span class="log-msg">DASHBOARD.md Phase 3 반영</span>
+              <span class="log-date"></span>
+            </div>
+            <div class="log-entry">
+              <span class="log-tag" style="background:#64748b">UPDATE</span>
+              <span class="log-msg">wiki/index.md 갱신 (35페이지, 연구자 9명)</span>
+              <span class="log-date"></span>
+            </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+const donutCtx = document.getElementById('donutChart').getContext('2d');
+new Chart(donutCtx, {
+  type: 'doughnut',
+  data: {
+    labels: ["\uac1c\ub150", "\ubc29\ubc95\ub860", "\uc774\ub860", "\ub17c\uc7c1", "\uc5f0\uad6c\uc790"],
+    datasets: [{ data: [20, 2, 2, 2, 9], backgroundColor: ["#6366f1", "#3b82f6", "#f59e0b", "#ef4444", "#10b981"],
+                 borderWidth: 2, borderColor: '#0f172a' }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { position: 'bottom', labels: { color: '#94a3b8', font: { size: 11 },
+                 padding: 10, boxWidth: 10 } }
+    }
+  }
+});
+
+const barCtx = document.getElementById('barChart').getContext('2d');
+new Chart(barCtx, {
+  type: 'bar',
+  data: {
+    labels: ["\uad50\uc721\uc5d0\uc11c\uc758 \uc0dd\uc131\ud615 AI (Genera", "\ud559\uc2b5 \ubd84\uc11d\ud559 (Learning Ana", "\ud53c\ub4dc\ubc31 (Feedback in Lea", "\ud611\ub3d9\ud559\uc2b5 (Collaborative ", "\uc790\uae30\uc870\uc808\ud559\uc2b5 (Self-Regulat", "\uad50\uc0ac \uc804\ubb38\uc131 \uac1c\ubc1c (Teacher P", "\uc778\uac04-AI \ud611\ub825 (Human-AI C", "\uba40\ud2f0\ubaa8\ub2ec \ud559\uc2b5 \ubd84\uc11d\ud559 (Multimo", "\uc801\uc751\ud615 \ud559\uc2b5 (Adaptive Lea", "\uad50\uc721 AI \uc724\ub9ac (AI Ethics ", "AI \ub9ac\ud130\ub7ec\uc2dc (AI Literacy", "AI \ud29c\ud130\ub9c1 \uc2dc\uc2a4\ud15c (AI Tutor", "\ud559\uc2b5\uc790 \ucc38\uc5ec (Student Enga", "\uad50\uc721\uc5d0\uc11c\uc758 \uac00\uc0c1\ud604\uc2e4 (Virtual ", "\uad50\uc721\uc5d0\uc11c\uc758 \uac10\uc815 \ucef4\ud4e8\ud305 (Affect"],
+    datasets: [{ label: '소스 수', data: [18, 14, 11, 10, 8, 8, 7, 7, 6, 6, 6, 6, 6, 6, 5],
+                  backgroundColor: ["#6366f1", "#6366f1", "#6366f1", "#6366f1", "#6366f1", "#6366f1", "#6366f1", "#6366f1", "#6366f1", "#6366f1", "#6366f1", "#6366f1", "#6366f1", "#6366f1", "#6366f1"], borderRadius: 4 }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    indexAxis: 'y',
+    plugins: { legend: { display: false } },
+    scales: {
+      x: { ticks: { color: '#94a3b8' }, grid: { color: '#1e293b' } },
+      y: { ticks: { color: '#cbd5e1', font: { size: 11 } }, grid: { display: false } }
+    }
+  }
+});
+</script>
+</body>
+</html>

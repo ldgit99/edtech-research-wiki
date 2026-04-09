@@ -17,6 +17,7 @@ import json
 import os
 import re
 import subprocess
+import sys
 from datetime import datetime
 from pathlib import Path
 
@@ -332,6 +333,11 @@ def main():
     git_commit(new_pages, compiled_count)
     log(f"[AUTO-COMPILE-DONE] 처리={compiled_count}편, 신규페이지={new_pages}개")
     print(f"\n=== 완료: {compiled_count}편 처리, {new_pages}개 신규 페이지 ===")
+
+    # 대시보드 재생성
+    dashboard_script = ROOT / "scripts" / "generate_dashboard.py"
+    if dashboard_script.exists():
+        subprocess.run([sys.executable, str(dashboard_script)], cwd=ROOT)
 
 
 if __name__ == "__main__":
