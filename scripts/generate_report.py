@@ -124,7 +124,8 @@ def build_prompt(papers: list, topics: list) -> str:
     {{
       "title": "동향 제목",
       "description": "2-3문장 설명. 구체적인 논문/저널 언급 포함.",
-      "evidence": "관련 토픽명이나 논문 제목 2-3개"
+      "evidence": "관련 토픽명이나 논문 제목 2-3개",
+      "details": "이 동향의 심층 분석: 연구 배경과 맥락, 대표 연구 사례 및 핵심 발견, 방법론적 특징, 실천적 시사점, 향후 연구 방향을 포함한 4-5문장의 상세 서술"
     }}
   ],
   "clusters": [
@@ -230,6 +231,14 @@ def render_html(data: dict, papers: list, topics: list) -> str:
         colors = ["#6366f1","#10b981","#f59e0b","#3b82f6","#ef4444"]
         for i, t in enumerate(data.get("trends", [])):
             c = colors[i % len(colors)]
+            details = t.get("details", "")
+            detail_block = f"""
+              <div class="trend-detail" id="td-{i}" style="display:none">
+                <div class="trend-detail-text">{details}</div>
+              </div>
+              <button class="detail-btn" onclick="toggleDetail({i})" id="btn-{i}">
+                상세히 보기 ▾
+              </button>""" if details else ""
             out += f"""
             <div class="trend-card">
               <div class="trend-num" style="background:{c}">{i+1}</div>
@@ -237,6 +246,7 @@ def render_html(data: dict, papers: list, topics: list) -> str:
                 <div class="trend-title">{t['title']}</div>
                 <div class="trend-desc">{t['description']}</div>
                 <div class="trend-evidence">근거: {t['evidence']}</div>
+                {detail_block}
               </div>
             </div>"""
         return out
@@ -410,6 +420,13 @@ body{{background:var(--bg);color:var(--txt);font-family:'Segoe UI',system-ui,san
                line-height:1.5;font-style:italic}}
 .rec-rationale{{color:#475569;line-height:1.65;margin-bottom:8px}}
 .rec-journals{{font-size:12px;color:var(--muted)}}
+.trend-detail{{margin-top:10px;padding:12px 14px;background:#f1f5f9;
+               border-left:3px solid #6366f1;border-radius:0 6px 6px 0}}
+.trend-detail-text{{color:#334155;font-size:13px;line-height:1.75}}
+.detail-btn{{margin-top:8px;background:none;border:1px solid #cbd5e1;
+             color:#6366f1;font-size:11px;font-weight:600;padding:4px 10px;
+             border-radius:6px;cursor:pointer;transition:all .2s}}
+.detail-btn:hover{{background:#ede9fe;border-color:#6366f1}}
 
 /* Stat bars */
 .stat-row{{display:flex;align-items:center;gap:10px;margin-bottom:8px}}
@@ -527,6 +544,16 @@ body{{background:var(--bg);color:var(--txt);font-family:'Segoe UI',system-ui,san
 </div>
 
 </div>
+
+<script>
+function toggleDetail(i) {{
+  const el  = document.getElementById('td-' + i);
+  const btn = document.getElementById('btn-' + i);
+  const open = el.style.display === 'none';
+  el.style.display  = open ? 'block' : 'none';
+  btn.textContent   = open ? '접기 ▴' : '상세히 보기 ▾';
+}}
+</script>
 </body>
 </html>
 """
