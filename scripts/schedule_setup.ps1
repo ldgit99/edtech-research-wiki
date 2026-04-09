@@ -4,7 +4,7 @@
 # 필수 환경변수: ANTHROPIC_API_KEY
 # 없으면 collect만 실행되고 compile은 건너뜀
 
-$WorkDir     = "D:\OneDrive\Documents\Obsidian Vault\03-Resources\edtech-research"
+$WorkDir     = "D:\OneDrive\Documents\Obsidian Vault\80-wiki\edtech-research"
 $Python      = (Get-Command python).Source
 $CollectScript = "$WorkDir\scripts\collect_all.py"
 $CompileScript = "$WorkDir\scripts\auto_compile.py"

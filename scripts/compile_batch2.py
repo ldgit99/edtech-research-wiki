@@ -7,8 +7,8 @@ import os
 import re
 from pathlib import Path
 
-INBOX = Path("D:/OneDrive/Documents/Obsidian Vault/03-Resources/edtech-research/raw/inbox")
-WIKI = Path("D:/OneDrive/Documents/Obsidian Vault/03-Resources/edtech-research/wiki")
+INBOX = Path("D:/OneDrive/Documents/Obsidian Vault/80-wiki/edtech-research/raw/inbox")
+WIKI = Path("D:/OneDrive/Documents/Obsidian Vault/80-wiki/edtech-research/wiki")
 
 def mark_compiled(filename: str):
     p = INBOX / filename
