@@ -232,7 +232,7 @@ def update_index_count(delta_pages: int, delta_sources: int) -> None:
     INDEX_FILE.write_text(text, encoding="utf-8")
 
 
-def git_commit(new_pages: int, compiled_count: int) -> None:
+def git_commit_and_push(new_pages: int, compiled_count: int) -> None:
     repo = ROOT
     subprocess.run(["git", "add", "-A"], cwd=repo)
     msg = (
@@ -240,6 +240,11 @@ def git_commit(new_pages: int, compiled_count: int) -> None:
         f"Co-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>"
     )
     subprocess.run(["git", "commit", "-m", msg], cwd=repo)
+    result = subprocess.run(["git", "push", "origin", "master"], cwd=repo)
+    if result.returncode == 0:
+        print("  [PUSH] GitHub 업로드 완료 → Pages 대시보드 갱신됨")
+    else:
+        print("  [WARN] git push 실패 — 로컬 커밋은 유지됨")
 
 
 # ── 메인 ────────────────────────────────────────────────────────
@@ -331,14 +336,17 @@ def main():
     if new_pages > 0:
         update_index_count(new_pages, 0)
 
-    git_commit(new_pages, compiled_count)
+    git_commit_and_push(new_pages, compiled_count)
     log(f"[AUTO-COMPILE-DONE] 처리={compiled_count}편, 신규페이지={new_pages}개")
     print(f"\n=== 완료: {compiled_count}편 처리, {new_pages}개 신규 페이지 ===")
 
-    # 대시보드 재생성
+    # 대시보드 재생성 후 push
     dashboard_script = ROOT / "scripts" / "generate_dashboard.py"
     if dashboard_script.exists():
         subprocess.run([sys.executable, str(dashboard_script)], cwd=ROOT)
+        subprocess.run(["git", "add", "dashboard.html"], cwd=ROOT)
+        subprocess.run(["git", "commit", "-m", "chore: dashboard.html 갱신"], cwd=ROOT)
+        subprocess.run(["git", "push", "origin", "master"], cwd=ROOT)
 
 
 if __name__ == "__main__":
