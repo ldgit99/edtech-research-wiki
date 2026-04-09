@@ -20,6 +20,7 @@ INBOX  = ROOT / "raw" / "inbox"
 WIKI   = ROOT / "wiki"
 OUTPUT = ROOT / "report.html"
 CACHE  = Path(__file__).parent / ".report_cache.json"
+CACHE_SCHEMA_VERSION = 2   # details 필드 추가 시 올릴 것
 
 
 # ── 데이터 수집 ──────────────────────────────────────────────────
@@ -194,9 +195,13 @@ def get_report_data(papers: list, topics: list) -> dict:
             cache = json.loads(CACHE.read_text(encoding="utf-8"))
             cached_at = datetime.fromisoformat(cache.get("generated_at", "2000-01-01"))
             paper_count = cache.get("paper_count", 0)
-            if datetime.now() - cached_at < timedelta(days=7) and paper_count == len(papers):
-                print("  캐시 사용 (7일 이내, 논문 수 동일)")
+            schema_ver = cache.get("schema_version", 1)
+            if (datetime.now() - cached_at < timedelta(days=7)
+                    and paper_count == len(papers)
+                    and schema_ver == CACHE_SCHEMA_VERSION):
+                print("  캐시 사용 (7일 이내, 논문 수 동일, 스키마 일치)")
                 return cache["data"]
+            print("  캐시 무효 (스키마 변경 또는 논문 수 변경) → 재생성")
         except Exception:
             pass
 
@@ -204,6 +209,7 @@ def get_report_data(papers: list, topics: list) -> dict:
     CACHE.write_text(json.dumps({
         "generated_at": datetime.now().isoformat(),
         "paper_count": len(papers),
+        "schema_version": CACHE_SCHEMA_VERSION,
         "data": data
     }, ensure_ascii=False, indent=2), encoding="utf-8")
     return data
