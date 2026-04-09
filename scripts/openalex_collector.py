@@ -15,24 +15,22 @@ WIKI_ROOT = Path(__file__).parent.parent
 WIKI_RAW  = WIKI_ROOT / "raw" / "inbox"
 WIKI_RAW.mkdir(parents=True, exist_ok=True)
 
-# OpenAlex 교육공학 핵심 학술지 ID
+# OpenAlex 교육공학 핵심 학술지 ID (검증된 ID)
 JOURNALS = {
     "Computers & Education":
-        "S4210172010",
+        "S4210172634",
     "British Journal of Educational Technology":
-        "S4210174990",
+        "S110346167",
     "Learning and Instruction":
-        "S4210194127",
+        "S78398831",
     "Educational Technology Research & Development":
-        "S4210196801",
-    "Computers in Human Behavior":
-        "S4210179490",
+        "S114840262",
     "Internet and Higher Education":
-        "S4210177891",
+        "S166850901",
     "Journal of Learning Analytics":
-        "S4210163803",
-    "Educational Psychologist":
-        "S4210200040",
+        "S2764890288",
+    "Computers and Education AI":
+        "S4210183364",
 }
 
 HEADERS = {
@@ -46,15 +44,16 @@ def collect(days_back: int = 7) -> int:
     print(f"수집 기간: {since} 이후")
 
     for journal_name, journal_id in JOURNALS.items():
-        url = (
-            "https://api.openalex.org/works"
-            f"?filter=primary_location.source.id:{journal_id},"
-            f"from_publication_date:{since}"
-            "&select=id,title,abstract,authorships,publication_date,doi,concepts"
-            "&per-page=25"
-        )
+        params = {
+            "filter": f"locations.source.id:{journal_id},from_publication_date:{since}",
+            "select": "id,title,authorships,publication_date,doi,primary_location,open_access",
+            "per-page": "25",
+        }
         try:
-            resp = requests.get(url, headers=HEADERS, timeout=15)
+            resp = requests.get(
+                "https://api.openalex.org/works",
+                params=params, headers=HEADERS, timeout=15
+            )
             resp.raise_for_status()
             papers = resp.json().get("results", [])
             for paper in papers:
@@ -82,12 +81,10 @@ def _save(paper: dict, journal_name: str) -> None:
         a.get("author", {}).get("display_name", "")
         for a in paper.get("authorships", [])
     )
-    concepts = ", ".join(
-        c["display_name"] for c in paper.get("concepts", [])[:6]
-    )
     doi = paper.get("doi", "")
     openalex_id = paper.get("id", "")
-    abstract = paper.get("abstract") or "초록 없음"
+    oa_info = paper.get("open_access") or {}
+    oa_url = oa_info.get("oa_url") or "" if isinstance(oa_info, dict) else ""
 
     content = f"""---
 type: raw-paper
@@ -97,7 +94,6 @@ doi: "{doi}"
 collected: "{datetime.now().strftime('%Y-%m-%d')}"
 publication-date: "{date}"
 authors: "{authors}"
-concepts: [{concepts}]
 compiled: false
 ---
 
@@ -107,15 +103,16 @@ compiled: false
 **학술지**: {journal_name}
 **발행일**: {date}
 **DOI**: {doi}
-**키워드**: {concepts}
 
 ## 초록
 
-{abstract}
+초록은 DOI 링크에서 확인하세요.
 
-## 원문
+## 원문 링크
 
-{openalex_id}
+- OpenAlex: {openalex_id}
+- DOI: https://doi.org/{doi.replace('https://doi.org/', '') if doi else ''}
+{f'- 오픈 액세스: {oa_url}' if oa_url else ''}
 """
     path.write_text(content, encoding="utf-8")
 

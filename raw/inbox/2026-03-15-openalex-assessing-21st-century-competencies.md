@@ -1,0 +1,27 @@
+---
+type: raw-paper
+source: openalex
+journal: "Journal of Learning Analytics"
+doi: "https://doi.org/10.18608/jla.2026.9131"
+collected: "2026-04-09"
+publication-date: "2026-03-15"
+authors: "Mónica Hernández-Campos, Isabel Hilliger, Francisco-José García-Peñalvo"
+compiled: true
+---
+
+# Assessing 21st Century Competencies
+
+**저자**: Mónica Hernández-Campos, Isabel Hilliger, Francisco-José García-Peñalvo
+**학술지**: Journal of Learning Analytics
+**발행일**: 2026-03-15
+**DOI**: https://doi.org/10.18608/jla.2026.9131
+
+## 초록
+
+초록은 DOI 링크에서 확인하세요.
+
+## 원문 링크
+
+- OpenAlex: https://openalex.org/W7136064938
+- DOI: https://doi.org/10.18608/jla.2026.9131
+- 오픈 액세스: https://learning-analytics.info/index.php/JLA/article/download/9131/7957

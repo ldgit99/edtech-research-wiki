@@ -53,10 +53,36 @@ def collect() -> int:
     return total
 
 
+def _safe_date(raw: str) -> str:
+    """다양한 날짜 형식을 YYYY-MM-DD로 정규화"""
+    if not raw:
+        return datetime.now().strftime("%Y-%m-%d")
+    # feedparser published: "Thu, 09 Apr 2026 00:00:00 +0000" 또는 "2026-04-09T..."
+    for fmt in ("%a, %d %b %Y %H:%M:%S %z", "%Y-%m-%dT%H:%M:%SZ", "%Y-%m-%d"):
+        try:
+            return datetime.strptime(raw[:len(fmt)+5].strip(), fmt).strftime("%Y-%m-%d")
+        except ValueError:
+            pass
+    # fallback: 숫자만 추출해서 첫 10자
+    digits = "".join(c if c.isdigit() or c == "-" else " " for c in raw)
+    parts = digits.split()
+    if parts and len(parts[0]) == 4:  # year first
+        return datetime.now().strftime("%Y-%m-%d")
+    return datetime.now().strftime("%Y-%m-%d")
+
+
+def _safe_arxiv_id(raw_id: str) -> str:
+    """arXiv ID에서 파일명에 사용 불가한 문자 제거"""
+    # "oai:arXiv.org:2604.06200v1" → "2604.06200v1"
+    part = raw_id.split(":")[-1]
+    # Windows 파일명에 사용 불가한 문자 제거: : / \ * ? " < > |
+    return "".join(c for c in part if c not in r':/\*?"<>|')
+
+
 def _save(entry: dict, category: str) -> None:
     pub = entry.get("published", "")
-    date = pub[:10] if len(pub) >= 10 else datetime.now().strftime("%Y-%m-%d")
-    arxiv_id = entry.get("id", "").split("/")[-1]
+    date = _safe_date(pub)
+    arxiv_id = _safe_arxiv_id(entry.get("id", "unknown"))
     filename = f"{date}-arxiv-{arxiv_id}.md"
     path = WIKI_RAW / filename
 
