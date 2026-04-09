@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 EdTech Research Wiki — 자동 컴파일러
-새로운 inbox 논문을 Claude API로 분석하여 wiki 페이지에 자동 반영
+새로운 inbox 논문을 OpenAI API로 분석하여 wiki 페이지에 자동 반영
 
 사용법:
   python auto_compile.py              # 전체 미컴파일 논문 처리
@@ -9,7 +9,7 @@ EdTech Research Wiki — 자동 컴파일러
   python auto_compile.py --limit 10   # 최대 N편만 처리
 
 환경변수:
-  ANTHROPIC_API_KEY  (필수)
+  OPENAI_API_KEY  (필수)
 """
 
 import argparse
@@ -21,7 +21,7 @@ import sys
 from datetime import datetime
 from pathlib import Path
 
-import anthropic
+from openai import OpenAI
 
 # ── 경로 설정 ────────────────────────────────────────────────────
 ROOT        = Path(__file__).parent.parent
@@ -31,7 +31,7 @@ LOG_FILE    = ROOT / "log.md"
 INDEX_FILE  = WIKI / "index.md"
 DASHBOARD   = ROOT / "DASHBOARD.md"
 
-CLAUDE_MODEL = "claude-haiku-4-5-20251001"   # 빠르고 저렴한 Haiku 사용
+OPENAI_MODEL = "gpt-4o-mini"   # 빠르고 저렴한 모델 사용
 
 
 # ── 헬퍼 ────────────────────────────────────────────────────────
@@ -56,11 +56,9 @@ def parse_paper_meta(path: Path) -> dict:
     text = path.read_text(encoding="utf-8")
     meta = {}
     for key in ("title", "authors", "journal", "publication-date", "doi", "arxiv-id", "category"):
-        # frontmatter에서 추출
         m = re.search(rf'^{key}:\s*"?([^"\n]+)"?', text, re.MULTILINE)
         if m:
             meta[key] = m.group(1).strip()
-    # 본문 제목 (# 으로 시작하는 첫 줄)
     m = re.search(r'^# (.+)$', text, re.MULTILINE)
     if m:
         meta["title"] = m.group(1).strip()
@@ -82,8 +80,8 @@ def get_existing_wiki_pages() -> dict:
     return pages
 
 
-def ask_claude(client: anthropic.Anthropic, papers: list[dict], wiki_pages: dict) -> list[dict]:
-    """Claude에게 논문 → wiki 페이지 매핑 요청"""
+def ask_llm(client: OpenAI, papers: list[dict], wiki_pages: dict) -> list[dict]:
+    """OpenAI에게 논문 → wiki 페이지 매핑 요청"""
 
     wiki_list = "\n".join(f"- {k}: {v}" for k, v in wiki_pages.items())
     papers_text = "\n\n".join(
@@ -123,18 +121,25 @@ def ask_claude(client: anthropic.Anthropic, papers: list[dict], wiki_pages: dict
 
 JSON만 반환하세요. 설명 없이."""
 
-    message = client.messages.create(
-        model=CLAUDE_MODEL,
+    response = client.chat.completions.create(
+        model=OPENAI_MODEL,
         max_tokens=4096,
-        messages=[{"role": "user", "content": prompt}]
+        response_format={"type": "json_object"},
+        messages=[
+            {"role": "system", "content": "You are an EdTech research wiki compiler. Return only valid JSON."},
+            {"role": "user", "content": prompt}
+        ]
     )
 
-    raw = message.content[0].text.strip()
-    # JSON 추출
-    m = re.search(r'\[.*\]', raw, re.DOTALL)
-    if m:
-        return json.loads(m.group())
-    return json.loads(raw)
+    raw = response.choices[0].message.content.strip()
+    parsed = json.loads(raw)
+    # response_format=json_object 는 최상위가 객체일 수 있으므로 배열 추출
+    if isinstance(parsed, list):
+        return parsed
+    for v in parsed.values():
+        if isinstance(v, list):
+            return v
+    return []
 
 
 def append_source_to_wiki(wiki_path: Path, inbox_filename: str) -> None:
@@ -145,14 +150,12 @@ def append_source_to_wiki(wiki_path: Path, inbox_filename: str) -> None:
     if inbox_filename in text:
         return  # 이미 있음
 
-    # source-count 증가
     text = re.sub(
         r'(source-count:\s*)(\d+)',
         lambda m: m.group(1) + str(int(m.group(2)) + 1),
         text, count=1
     )
 
-    # ## 소스 섹션 끝에 추가
     if "## 소스" in text:
         text = text.rstrip() + f"\n{link}\n"
     else:
@@ -220,11 +223,9 @@ def mark_compiled(inbox_path: Path) -> None:
 
 def update_index_count(delta_pages: int, delta_sources: int) -> None:
     text = INDEX_FILE.read_text(encoding="utf-8")
-    # total-pages 갱신
     def inc(m):
         return m.group(1) + str(int(m.group(2)) + delta_pages)
     text = re.sub(r'(total-pages:\s*)(\d+)', inc, text, count=1)
-    # total-sources 갱신
     def inc2(m):
         return m.group(1) + str(int(m.group(2)) + delta_sources)
     text = re.sub(r'(total-sources:\s*)(\d+)', inc2, text, count=1)
@@ -248,13 +249,13 @@ def main():
     parser.add_argument("--limit", type=int, default=50)
     args = parser.parse_args()
 
-    api_key = os.environ.get("ANTHROPIC_API_KEY")
+    api_key = os.environ.get("OPENAI_API_KEY")
     if not api_key:
-        print("[오류] ANTHROPIC_API_KEY 환경변수가 설정되지 않았습니다.")
-        print("  set ANTHROPIC_API_KEY=sk-ant-...")
+        print("[오류] OPENAI_API_KEY 환경변수가 설정되지 않았습니다.")
+        print("  set OPENAI_API_KEY=sk-...")
         return
 
-    client = anthropic.Anthropic(api_key=api_key)
+    client = OpenAI(api_key=api_key)
 
     uncompiled = get_uncompiled()[:args.limit]
     if not uncompiled:
@@ -272,8 +273,8 @@ def main():
     all_decisions = []
     for i in range(0, len(papers), BATCH):
         batch = papers[i:i+BATCH]
-        print(f"  Claude 분석 중... ({i+1}~{i+len(batch)}편)")
-        decisions = ask_claude(client, batch, wiki_pages)
+        print(f"  GPT 분석 중... ({i+1}~{i+len(batch)}편)")
+        decisions = ask_llm(client, batch, wiki_pages)
         all_decisions.extend(decisions)
 
     if args.dry_run:
