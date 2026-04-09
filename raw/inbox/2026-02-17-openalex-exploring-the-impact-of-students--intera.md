@@ -6,7 +6,7 @@ doi: "https://doi.org/10.1016/j.learninstruc.2026.102337"
 collected: "2026-04-09"
 publication-date: "2026-02-17"
 authors: "Z. Sun, Mingyong Pang, Yimin Wang"
-compiled: false
+compiled: true
 ---
 
 # Exploring the impact of students' interaction willingness on learning outcomes: An empirical study of cooperative learning in vocational education

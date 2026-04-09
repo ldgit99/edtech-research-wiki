@@ -6,7 +6,7 @@ doi: "https://doi.org/10.1016/j.iheduc.2026.101078"
 collected: "2026-04-09"
 publication-date: "2026-02-17"
 authors: "Yeonji Jung, Sophia Soomin Lee, Alyssa Friend Wise"
-compiled: false
+compiled: true
 ---
 
 # Short-term gains, long-term gaps: Unpacking the role of learning analytics in student engagement in social annotation

@@ -6,7 +6,7 @@ doi: "https://doi.org/10.1016/j.compedu.2026.105594"
 collected: "2026-04-09"
 publication-date: "2026-02-11"
 authors: "Jessa Henderson, Natalie B. Milman, Brandi A. Weiss"
-compiled: false
+compiled: true
 ---
 
 # Educator use of algorithmic advice in decision making: Results from a virtual course recommendation simulation

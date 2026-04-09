@@ -6,7 +6,7 @@ doi: "https://doi.org/10.1016/j.learninstruc.2026.102317"
 collected: "2026-04-09"
 publication-date: "2026-01-18"
 authors: "H. H. Lee, Hanall Sung, Sylvia Celedón‐Pattichis, Marios S. Pattichis"
-compiled: false
+compiled: true
 ---
 
 # Toward an inclusive understanding of collaborative learning using MMLA: Exploring multimodal participation dynamics by gender and linguistic diversity

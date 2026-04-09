@@ -6,7 +6,7 @@ doi: "https://doi.org/10.1111/bjet.70048"
 collected: "2026-04-09"
 publication-date: "2026-01-24"
 authors: "Natasha Anne Rappa, Karen P. Nonis, Kok‐Sing Tang, Grant Cooper, Martin Cooper, Craig Sims"
-compiled: false
+compiled: true
 ---
 
 # Can Generative <scp>AI</scp> support the learning agency of students with disability? A case study of an Australian secondary school

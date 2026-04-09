@@ -6,7 +6,7 @@ doi: "https://doi.org/10.18608/jla.2026.9743"
 collected: "2026-04-09"
 publication-date: "2026-03-30"
 authors: "Abhinava Barthakur, Olga Viberg, René F. Kizilcec, Ryan S. Baker, Shane Dawson"
-compiled: false
+compiled: true
 ---
 
 # Advancing 21st-Century Professional Competencies with Learning Analytics in the Age of Generative AI

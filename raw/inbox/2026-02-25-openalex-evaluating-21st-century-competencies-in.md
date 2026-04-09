@@ -6,7 +6,7 @@ doi: "https://doi.org/10.18608/jla.2026.9127"
 collected: "2026-04-09"
 publication-date: "2026-02-25"
 authors: "Z. Xu, Xin Guan, Chenxi Shi, Qinhao Chen, Renzhe Yu"
-compiled: false
+compiled: true
 ---
 
 # Evaluating 21st-Century Competencies in Postsecondary Curricula with Large Language Models

@@ -6,7 +6,7 @@ doi: "https://doi.org/10.1016/j.iheduc.2026.101077"
 collected: "2026-04-09"
 publication-date: "2026-02-14"
 authors: "Yaxin Tu, Changqin Huang, Yafeng Pan, Gwo-Jen Hwang"
-compiled: false
+compiled: true
 ---
 
 # Mapping the structure of student burnout in online learning: An integrated Gaussian model and directed acyclic graph approach

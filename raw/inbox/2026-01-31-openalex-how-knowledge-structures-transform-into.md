@@ -6,7 +6,7 @@ doi: "https://doi.org/10.1016/j.learninstruc.2026.102322"
 collected: "2026-04-09"
 publication-date: "2026-01-31"
 authors: "Chaoqun Ye, Senqing Qi, Yuhong Lin, Yangping Li, Weiping Hu"
-compiled: false
+compiled: true
 ---
 
 # How knowledge structures transform into scientific creative thinking in the science education context: Behavioral and neural evidence

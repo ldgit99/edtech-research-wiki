@@ -6,7 +6,7 @@ doi: "https://doi.org/10.1007/s11423-026-10585-3"
 collected: "2026-04-09"
 publication-date: "2026-01-13"
 authors: "Florence Martin, Min Zhuang, Erik Jon Byker, WeiChao Wang, Julie Bacak, Lynn Ahlgrim-Delzell"
-compiled: false
+compiled: true
 ---
 
 # Correction: Multimedia-based cybersecurity and privacy professional development on educational technology for K-12 personnel

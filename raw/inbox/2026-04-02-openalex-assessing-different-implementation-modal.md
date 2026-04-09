@@ -6,7 +6,7 @@ doi: "https://doi.org/10.1111/bjet.70056"
 collected: "2026-04-09"
 publication-date: "2026-04-02"
 authors: "Annette Zhao, Anne‐Fleur Lurvink, Christopher Klune, Jessica Hinks, Iman Beoku‐Betts, Upendranadh Choragudi, Gopal Iyer"
-compiled: false
+compiled: true
 ---
 
 # Assessing different implementation modalities of an <scp>EdTech</scp> intervention for lower‐primary learners: A difference‐in‐difference study in Sierra Leone

@@ -6,7 +6,7 @@ doi: "https://doi.org/10.1007/s11423-026-10599-x"
 collected: "2026-04-09"
 publication-date: "2026-02-21"
 authors: "Runyu Zhang, Shuhui Li, Qiaoping Zhang"
-compiled: false
+compiled: true
 ---
 
 # Fostering students’ computational thinking and mathematical learning through a Scratch-based probability module: a quasi-experimental study

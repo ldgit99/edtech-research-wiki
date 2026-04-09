@@ -6,7 +6,7 @@ doi: "https://doi.org/10.18608/jla.2026.8725"
 collected: "2026-04-09"
 publication-date: "2026-03-18"
 authors: "Paul Sargent, Isabel Hilliger, Jorge A. Baier"
-compiled: false
+compiled: true
 ---
 
 # Beyond Time on Task

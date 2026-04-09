@@ -6,7 +6,7 @@ doi: "https://doi.org/10.1016/j.learninstruc.2026.102323"
 collected: "2026-04-09"
 publication-date: "2026-01-20"
 authors: "Haiqing Yu, Leijin Shu, Yongzhi Huang, Tzyy-Ping Jung, Minpeng Xu, Dong MING"
-compiled: false
+compiled: true
 ---
 
 # Tracking college student's learning gains using EEG hyperscanning: An interpersonal neuroscience approach development and validation

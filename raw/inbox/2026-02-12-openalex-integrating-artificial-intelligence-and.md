@@ -6,7 +6,7 @@ doi: "https://doi.org/10.1016/j.caeai.2026.100557"
 collected: "2026-04-09"
 publication-date: "2026-02-12"
 authors: "William Villegas-Ch, Rommel Gutierrez, Ángel Jaramillo-Alcázar, Alexandra Maldonado-Navarro"
-compiled: false
+compiled: true
 ---
 
 # Integrating artificial intelligence and data envelopment analysis for sustainable efficiency assessment in higher education

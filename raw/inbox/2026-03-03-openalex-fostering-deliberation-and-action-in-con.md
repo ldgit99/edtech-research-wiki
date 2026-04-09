@@ -6,7 +6,7 @@ doi: "https://doi.org/10.1111/bjet.70044"
 collected: "2026-04-09"
 publication-date: "2026-03-03"
 authors: "Koula Charitonos, Allison Littlejohn, Saraswati Dawadi, Abhinav Vaidya, Alex Owusu‐Ofori, Fereshte Goshtasbpour, Santosi Giri"
-compiled: false
+compiled: true
 ---
 
 # Fostering deliberation and action in context: An analysis of implementation research among healthcare professionals in <scp>LMICs</scp> from a post‐digital perspective

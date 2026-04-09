@@ -6,7 +6,7 @@ doi: "https://doi.org/10.1016/j.caeai.2026.100560"
 collected: "2026-04-09"
 publication-date: "2026-02-19"
 authors: "Eunhye Grace Ko, Joan E. Hughes"
-compiled: false
+compiled: true
 ---
 
 # Value-sensitive design in action: Designing student-centered intelligent tutoring systems with community college students and instructors

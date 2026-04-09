@@ -6,7 +6,7 @@ doi: "https://doi.org/10.1016/j.caeai.2026.100558"
 collected: "2026-04-09"
 publication-date: "2026-02-11"
 authors: "Ji Yoon Jung, Ummugul Bezirhan, Matthias von Davier"
-compiled: false
+compiled: true
 ---
 
 # Optimizing automated scoring in ILSAs with prompt compression

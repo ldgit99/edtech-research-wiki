@@ -6,7 +6,7 @@ doi: "https://doi.org/10.1016/j.learninstruc.2026.102324"
 collected: "2026-04-09"
 publication-date: "2026-02-11"
 authors: "Jana Heinz, F Neuberger, Laura Eras, Uta Hauck-Thum"
-compiled: false
+compiled: true
 ---
 
 # Bridging the digital divide? Effects of analog and digital reading interventions in German elementary schools

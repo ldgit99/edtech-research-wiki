@@ -6,7 +6,7 @@ doi: "https://doi.org/10.1016/j.compedu.2026.105603"
 collected: "2026-04-09"
 publication-date: "2026-02-28"
 authors: "Markus Al-Afifi, Thomas E. Nygren"
-compiled: false
+compiled: true
 ---
 
 # Gaining tolerance of immigrants through simulating migratory experiences: Quasi-experimental evidence from secondary school classrooms

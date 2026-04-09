@@ -6,7 +6,7 @@ doi: "https://doi.org/10.1016/j.learninstruc.2026.102340"
 collected: "2026-04-09"
 publication-date: "2026-03-01"
 authors: "Bertrand Schneider, Edwin Chng"
-compiled: false
+compiled: true
 ---
 
 # Corrigendum to “Connecting joint visual attention, community belonging, and self-efficacy in makerspace environments using high frequency data” [Learning and Instruction 103 (2026) 102315]

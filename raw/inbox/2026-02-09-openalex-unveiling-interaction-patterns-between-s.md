@@ -6,7 +6,7 @@ doi: "https://doi.org/10.1111/bjet.70038"
 collected: "2026-04-09"
 publication-date: "2026-02-09"
 authors: "Wanli Xing, Taehyun Kim, Yukyeong Song, Hai Li, Chenglu Li, Jinhee Kim"
-compiled: false
+compiled: true
 ---
 
 # Unveiling interaction patterns between students and generative <scp>AI</scp> teachable agent: Focusing on students' agency and <scp>AI</scp> agents' authority

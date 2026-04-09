@@ -6,7 +6,7 @@ doi: "https://doi.org/10.1016/j.compedu.2026.105592"
 collected: "2026-04-09"
 publication-date: "2026-02-10"
 authors: "Zhenya Tang, Seongjin Kim, Houcai Wang, Botong Xue, Yang Zhou"
-compiled: false
+compiled: true
 ---
 
 # Teaching with AI: A dual qualitative study of parents’ intention to use generative AI for tutoring in China and the West

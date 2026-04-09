@@ -26,3 +26,14 @@
 - [COMPILE] 58개 inbox 논문 compiled: true 표시
 - [UPDATE] wiki/index.md 갱신 (18페이지 목록)
 - [UPDATE] DASHBOARD.md 현황 반영
+
+## 2026-04-09 (2차 컴파일 세션)
+
+- [COMPILE] 2차 컴파일 완료: 9개 wiki 페이지 추가 생성
+  - concepts/: computational-thinking, student-engagement, equity-in-education,
+    affective-computing-in-education, adaptive-learning, human-ai-collaboration, ai-ethics-in-education
+  - researchers/: wanli-xing, isabel-hilliger
+- [COMPILE] 나머지 117편 inbox 논문 전체 compiled: true 표시 (총 175편 완료)
+- [UPDATE] wiki/index.md 갱신 (29페이지 목록)
+- [UPDATE] DASHBOARD.md 현황 반영 (Phase 2 완료)
+- [SCRIPT] scripts/compile_batch2.py 생성 및 실행

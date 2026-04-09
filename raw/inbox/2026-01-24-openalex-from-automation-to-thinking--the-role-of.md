@@ -6,7 +6,7 @@ doi: "https://doi.org/10.1016/j.compedu.2026.105579"
 collected: "2026-04-09"
 publication-date: "2026-01-24"
 authors: "T.-C. Chang, Alice R.P. Li, C.-Y. Wang, John J.H. Lin"
-compiled: false
+compiled: true
 ---
 
 # From automation to thinking: The role of AGI in discourse analysis of computer-supported collaborative learning based on computational grounded theory

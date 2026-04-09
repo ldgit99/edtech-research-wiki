@@ -6,7 +6,7 @@ doi: "https://doi.org/10.1016/j.iheduc.2026.101079"
 collected: "2026-04-09"
 publication-date: "2026-02-26"
 authors: "Yun-Fang Tu, Gen-ping Liu, Gwo-Jen Hwang, Xu-Wei Chen, Xiao-Ge Guo"
-compiled: false
+compiled: true
 ---
 
 # AI self-efficacy and knowledge graph-integrated generative AI feedback in higher education

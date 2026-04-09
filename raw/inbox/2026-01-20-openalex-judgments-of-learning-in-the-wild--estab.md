@@ -6,7 +6,7 @@ doi: "https://doi.org/10.1016/j.learninstruc.2025.102293"
 collected: "2026-04-09"
 publication-date: "2026-01-20"
 authors: "Marc Philipp Janson, Samuel Wissel, Franziska Ingendahl, Monika Undorf"
-compiled: false
+compiled: true
 ---
 
 # Judgments of learning in the wild: Establishing ecological validity with an intelligent tutoring system in a field study

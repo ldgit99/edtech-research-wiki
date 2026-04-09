@@ -6,7 +6,7 @@ doi: "https://doi.org/10.1016/j.caeai.2026.100564"
 collected: "2026-04-09"
 publication-date: "2026-03-04"
 authors: "Weipeng Shen, Ching-Sing CHAI, Thomas K.F. Chiu, King Woon Yau, Helen Meng, Irwin King, Savio Wong, Yeung YAM"
-compiled: false
+compiled: true
 ---
 
 # Pedagogy first, technology second: Cross-level relationships between teacher professional knowledge and student learning in artificial intelligence (AI) education

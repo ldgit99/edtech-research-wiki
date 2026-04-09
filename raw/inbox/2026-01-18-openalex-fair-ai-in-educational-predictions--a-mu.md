@@ -6,7 +6,7 @@ doi: "https://doi.org/10.1016/j.iheduc.2026.101074"
 collected: "2026-04-09"
 publication-date: "2026-01-18"
 authors: "Fan Zhang, Wanli Xing, Chenglu Li, Yihan Jiang"
-compiled: false
+compiled: true
 ---
 
 # Fair AI in educational predictions: A multi-group fairness approach using reinforcement learning

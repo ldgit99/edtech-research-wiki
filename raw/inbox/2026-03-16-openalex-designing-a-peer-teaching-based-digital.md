@@ -6,7 +6,7 @@ doi: "https://doi.org/10.1007/s11423-026-10609-y"
 collected: "2026-04-09"
 publication-date: "2026-03-16"
 authors: "Wei Zhou, Xiaodong Xu"
-compiled: false
+compiled: true
 ---
 
 # Designing a peer teaching-based digital error correction approach to promote primary students learning performance, learning engagement, and perceptions

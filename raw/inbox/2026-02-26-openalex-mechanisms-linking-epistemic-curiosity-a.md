@@ -6,7 +6,7 @@ doi: "https://doi.org/10.1016/j.learninstruc.2026.102336"
 collected: "2026-04-09"
 publication-date: "2026-02-26"
 authors: "Merbiya Emin, Yang Liu, Qin Yao, Yadan LI"
-compiled: false
+compiled: true
 ---
 
 # Mechanisms linking epistemic curiosity and learning performance: The multifaceted role of mind wandering from trait and state analysis

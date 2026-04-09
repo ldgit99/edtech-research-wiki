@@ -6,7 +6,7 @@ doi: "https://doi.org/10.1016/j.learninstruc.2026.102339"
 collected: "2026-04-09"
 publication-date: "2026-02-13"
 authors: "M. Netzer, Dafna Gan, Ofira Ayalon"
-compiled: false
+compiled: true
 ---
 
 # International perspectives on incorporating climate change into forest school training programs

@@ -6,7 +6,7 @@ doi: "https://doi.org/10.1016/j.compedu.2026.105613"
 collected: "2026-04-09"
 publication-date: "2026-03-07"
 authors: "Ye Zhang, Runze Li, Haoyu Wang, Yu Ge"
-compiled: false
+compiled: true
 ---
 
 # A critical examination of blockchain in education: A hybrid bibliometric and content analysis of sociotechnical imaginaries and pedagogical marginality

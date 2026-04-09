@@ -6,7 +6,7 @@ doi: "https://doi.org/10.1111/bjet.70042"
 collected: "2026-04-09"
 publication-date: "2026-01-14"
 authors: "Rahul Pachori, Raghu Vamshi Devarakonda, Rajnish Kumar"
-compiled: false
+compiled: true
 ---
 
 # From crisis to transformation: Evaluating the implementation of <scp>DIKSHA</scp> in India's <scp>EdTech</scp> landscape

@@ -6,7 +6,7 @@ doi: "https://doi.org/10.18608/jla.2026.9037"
 collected: "2026-04-09"
 publication-date: "2026-03-30"
 authors: "Guillermo Bautista, Roderick Cacuyong, Zsolt Lavicza, Barbara Sabitzer, Mona Emara"
-compiled: false
+compiled: true
 ---
 
 # Function Art

@@ -6,7 +6,7 @@ doi: "https://doi.org/10.1007/s11423-026-10606-1"
 collected: "2026-04-09"
 publication-date: "2026-03-06"
 authors: "Fan Ouyang, Ning Zhang"
-compiled: false
+compiled: true
 ---
 
 # The implementation of a group knowledge awareness tool to promote collaborative discussions in China’s higher education

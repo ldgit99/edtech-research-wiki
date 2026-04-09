@@ -6,7 +6,7 @@ doi: "https://doi.org/10.18608/jla.2026.9099"
 collected: "2026-04-09"
 publication-date: "2026-03-14"
 authors: "Alice Xu, Yunyi Zhang, Adam B. Blake, James W. Stigler"
-compiled: false
+compiled: true
 ---
 
 # Modelability as a Strategy for Improving the Generalizability and Scalability of Predictive Models

@@ -6,7 +6,7 @@ doi: "https://doi.org/10.1016/j.caeai.2026.100554"
 collected: "2026-04-09"
 publication-date: "2026-02-07"
 authors: "Sina Rismanchian, Eesha tur razia babar, Shayan Doroudi"
-compiled: false
+compiled: true
 ---
 
 # What undergraduate students need to know and actually know about generative AI

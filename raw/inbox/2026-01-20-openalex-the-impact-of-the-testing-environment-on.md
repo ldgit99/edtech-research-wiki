@@ -6,7 +6,7 @@ doi: "https://doi.org/10.1016/j.compedu.2026.105577"
 collected: "2026-04-09"
 publication-date: "2026-01-20"
 authors: "Kozlova Zoya, Cera Raphael, Hoyer Christoph, Flegr Salome, Kuhn Jochen, I. Hofer Sarah"
-compiled: false
+compiled: true
 ---
 
 # The impact of the testing environment on gender differences in mental rotation performance: Does virtual reality make a difference?

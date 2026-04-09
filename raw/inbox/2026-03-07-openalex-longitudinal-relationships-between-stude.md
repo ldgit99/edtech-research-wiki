@@ -6,7 +6,7 @@ doi: "https://doi.org/10.1016/j.compedu.2026.105614"
 collected: "2026-04-09"
 publication-date: "2026-03-07"
 authors: "Weipeng Shen, Ching-Sing CHAI, Thomas K.F. Chiu, King Woon Yau, Helen Meng, Irwin King, Savio Wong, Yeung YAM"
-compiled: false
+compiled: true
 ---
 
 # Longitudinal relationships between student ethical considerations, behavioral intention, and perceived knowledge in artificial intelligence education

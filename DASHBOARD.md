@@ -13,14 +13,14 @@ updated: 2026-04-09
 
 | 항목 | 값 |
 |---|---|
-| **단계** | Phase 1 — 초기 컴파일 완료 ✓ |
-| **wiki 페이지 총수** | **18** |
-| **개념(Concepts)** | 11 |
+| **단계** | Phase 2 — 전체 컴파일 완료 ✓ |
+| **wiki 페이지 총수** | **29** |
+| **개념(Concepts)** | 18 |
 | **이론(Theories)** | 2 |
 | **방법론(Methodologies)** | 2 |
-| **연구자(Researchers)** | 4 |
+| **연구자(Researchers)** | 6 |
 | **논쟁(Debates)** | 1 |
-| **inbox 대기 논문** | 175편 (추가 컴파일 필요) |
+| **inbox 대기 논문** | 0편 (175편 전체 컴파일 완료) |
 | **마지막 컴파일** | 2026-04-09 |
 
 ---
@@ -30,9 +30,9 @@ updated: 2026-04-09
 ```
 [자동 수집]                 [컴파일 ✓]             [활용]
 ────────────                ──────────             ──────
-OpenAlex: 132편  ──→  inbox  wiki/ 18페이지         /wiki query
+OpenAlex: 132편  ──→  inbox  wiki/ 29페이지  ──→   /wiki query
 arXiv: 43편      ──→  175편  ─────────────→        /kb-reflect
-RISS: 0편(대기)           (추가 실행 필요)          슬라이드 생성
+RISS: 0편(대기)   ✅ 전체 완료             →        슬라이드 생성
 HWP 파일        ──→                                HWPX 보고서
        ↑                            ↓
   collect_all.py              git 자동 커밋
@@ -113,10 +113,30 @@ LIMIT 10
 ## 다음 할 일
 
 - [x] **[완료]** 초기 wiki 컴파일 (18페이지 생성)
-- [ ] **[다음]** 추가 논문 175편 컴파일 (개념·연구자 확장)
+- [x] **[완료]** 추가 논문 175편 전체 컴파일 (29페이지, 7개 신규 개념 + 2명 신규 연구자)
+- [ ] **[다음]** 새 논문 수집: `python scripts/collect_all.py`
+- [ ] **[다음]** `/kb-reflect` 실행 → 크로스 테마 합성 분석
 - [ ] **[권장]** RISS API 키 발급 → 국내 논문 수집 시작
 - [ ] **[선택]** HWP 파일 처리: `python scripts/hwpx_batch_ingest.py <폴더>`
-- [ ] **[월간]** `/kb-reflect` 실행 → 합성 분석 생성
+
+---
+
+## 2차 컴파일에서 추가된 내용 (2026-04-09)
+
+### 신규 개념 페이지 (7개)
+| 페이지 | 소스 수 |
+|---|---|
+| [[concepts/computational-thinking]] | 5 |
+| [[concepts/student-engagement]] | 6 |
+| [[concepts/equity-in-education]] | 5 |
+| [[concepts/affective-computing-in-education]] | 5 |
+| [[concepts/adaptive-learning]] | 5 |
+| [[concepts/human-ai-collaboration]] | 6 |
+| [[concepts/ai-ethics-in-education]] | 6 |
+
+### 신규 연구자 페이지 (2명)
+- [[researchers/wanli-xing]] — UT Arlington, 공정 AI·GenAI 에이전트
+- [[researchers/isabel-hilliger]] — PUC Chile, LA 제도화·학생 성공
 
 ---
 

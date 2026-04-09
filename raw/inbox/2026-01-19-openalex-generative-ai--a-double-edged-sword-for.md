@@ -6,7 +6,7 @@ doi: "https://doi.org/10.1016/j.compedu.2026.105578"
 collected: "2026-04-09"
 publication-date: "2026-01-19"
 authors: "Xinheng Song, Yue Zhang, Z. H. Lu, Le Xu, H. M. Shen"
-compiled: false
+compiled: true
 ---
 
 # Generative AI: A double-edged sword for creative thinking learning — Evidence from facial expressions and fNIRS

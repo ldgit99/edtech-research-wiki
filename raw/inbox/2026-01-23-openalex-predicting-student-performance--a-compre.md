@@ -6,7 +6,7 @@ doi: "https://doi.org/10.1016/j.caeai.2026.100548"
 collected: "2026-04-09"
 publication-date: "2026-01-23"
 authors: "Salma Boujmiraz, Hassan Darhmaoui, Ahmed Drissi el Maliani"
-compiled: false
+compiled: true
 ---
 
 # Predicting student performance: A comprehensive review of machine learning, deep learning, and explainable AI approaches

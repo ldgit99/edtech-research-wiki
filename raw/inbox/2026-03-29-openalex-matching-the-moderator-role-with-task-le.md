@@ -6,7 +6,7 @@ doi: "https://doi.org/10.1016/j.iheduc.2026.101088"
 collected: "2026-04-09"
 publication-date: "2026-03-29"
 authors: "Peiyu Wang, Heng Luo"
-compiled: false
+compiled: true
 ---
 
 # Matching the moderator role with task level in asynchronous online discussions: Insights from a randomized experiment

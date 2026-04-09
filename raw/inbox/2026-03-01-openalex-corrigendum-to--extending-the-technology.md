@@ -6,7 +6,7 @@ doi: "https://doi.org/10.1016/j.caeai.2026.100562"
 collected: "2026-04-09"
 publication-date: "2026-03-01"
 authors: "Rochman Hadi Mustofa, Trian Gigih Kuncoro, Dwi Atmono, Hardika Dwi Hermawan, Sukirman"
-compiled: false
+compiled: true
 ---
 
 # Corrigendum to “Extending the technology acceptance model: The role of subjective norms, ethics, and trust in AI tool adoption among students” [Computers and Education: Artificial Intelligence. 8 (2025) 100379]

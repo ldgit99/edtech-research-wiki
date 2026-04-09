@@ -6,7 +6,7 @@ doi: "https://doi.org/10.1016/j.learninstruc.2025.102308"
 collected: "2026-04-09"
 publication-date: "2026-01-29"
 authors: "Katarzyna Bobrowicz, Angélica Mendes"
-compiled: false
+compiled: true
 ---
 
 # Spatial skills in early childhood education

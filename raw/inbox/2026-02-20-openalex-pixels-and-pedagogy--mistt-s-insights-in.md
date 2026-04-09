@@ -6,7 +6,7 @@ doi: "https://doi.org/10.1016/j.compedu.2026.105601"
 collected: "2026-04-09"
 publication-date: "2026-02-20"
 authors: "Ottavia Trevisan, Filippo Marcato, Rhonda Christensen"
-compiled: false
+compiled: true
 ---
 
 # Pixels and pedagogy: MISTT's insights into evolving teacher identities when technology comes to play

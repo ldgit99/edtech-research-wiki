@@ -6,7 +6,7 @@ doi: "https://doi.org/10.1007/s11423-026-10589-z"
 collected: "2026-04-09"
 publication-date: "2026-01-16"
 authors: "Oktay Cem Adiguzel, Patrice Potvin, Emrullah Esen"
-compiled: false
+compiled: true
 ---
 
 # The impact of neuroscience and artificial intelligence on feedback: a systematic review

@@ -6,7 +6,7 @@ doi: "https://doi.org/10.1111/bjet.70043"
 collected: "2026-04-09"
 publication-date: "2026-01-22"
 authors: "Ngoc Nhu Nguyen, Walter Barbieri"
-compiled: false
+compiled: true
 ---
 
 # Generative <scp>AI</scp> in work‐integrated learning: Supporting pre‐service teachers' emotional labour and self‐management in Australian initial teacher education

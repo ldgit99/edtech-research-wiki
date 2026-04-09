@@ -6,7 +6,7 @@ doi: "https://doi.org/10.1016/j.caeai.2026.100569"
 collected: "2026-04-09"
 publication-date: "2026-03-07"
 authors: "Joohi Lee"
-compiled: false
+compiled: true
 ---
 
 # Play with AI (PL-AI): A play-centered, design-based curriculum for AI literacy in pre-K and kindergarten

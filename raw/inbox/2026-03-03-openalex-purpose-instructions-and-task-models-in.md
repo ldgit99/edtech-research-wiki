@@ -6,7 +6,7 @@ doi: "https://doi.org/10.1016/j.learninstruc.2026.102347"
 collected: "2026-04-09"
 publication-date: "2026-03-03"
 authors: "Bailing Lyu, Yao Zheng, Matthew T. McCrudden"
-compiled: false
+compiled: true
 ---
 
 # Purpose instructions and task models in multiple-text reading

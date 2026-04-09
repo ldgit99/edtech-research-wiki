@@ -6,7 +6,7 @@ doi: "https://doi.org/10.1016/j.caeai.2026.100549"
 collected: "2026-04-09"
 publication-date: "2026-01-24"
 authors: "Shuang Quan, Xintian Tu-Shea, Yi Ding, Yao Du, Qingxiao Zheng, Laney E. Gerdich"
-compiled: false
+compiled: true
 ---
 
 # Conversational AI in children's home literacy learning: effectiveness, advantages, challenges, and family perception

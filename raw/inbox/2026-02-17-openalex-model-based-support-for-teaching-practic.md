@@ -6,7 +6,7 @@ doi: "https://doi.org/10.1007/s11423-026-10592-4"
 collected: "2026-04-09"
 publication-date: "2026-02-17"
 authors: "Chih-Pu Dai, Fengfeng Ke"
-compiled: false
+compiled: true
 ---
 
 # Model-based support for teaching practice and self-efficacy in artificial intelligence-enhanced virtual reality teaching simulation

@@ -6,7 +6,7 @@ doi: "https://doi.org/10.1016/j.iheduc.2026.101080"
 collected: "2026-04-09"
 publication-date: "2026-02-26"
 authors: "Mohammadbashir Sedighi, Sinnathamby Sritharakumar"
-compiled: false
+compiled: true
 ---
 
 # Emotional artificial intelligence in higher education: A systematic review

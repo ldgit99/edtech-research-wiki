@@ -6,7 +6,7 @@ doi: "https://doi.org/10.1016/j.learninstruc.2025.102307"
 collected: "2026-04-09"
 publication-date: "2026-01-13"
 authors: "Maria Danzglock, Roland Berger, Martin Hänze"
-compiled: false
+compiled: true
 ---
 
 # Interleaved practice in physics benefits from collaboration

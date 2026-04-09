@@ -6,7 +6,7 @@ doi: "https://doi.org/10.1007/s11423-026-10608-z"
 collected: "2026-04-09"
 publication-date: "2026-03-19"
 authors: "Christine Wusylko, Albert D. Ritzhaupt, Xiaoman Wang, Max Sommer, Angela M. Kohnen, Kara Dawson"
-compiled: false
+compiled: true
 ---
 
 # Exploring the relationships among adolescent students’ metacognitive awareness and social media use on predicting and explaining incidental information literacy

@@ -6,7 +6,7 @@ doi: "https://doi.org/10.1016/j.caeai.2026.100556"
 collected: "2026-04-09"
 publication-date: "2026-02-10"
 authors: "Siu Cheung Kong, Wenxi Hu"
-compiled: false
+compiled: true
 ---
 
 # Unleashing human potential: An artificial intelligence competency framework for K–12 education

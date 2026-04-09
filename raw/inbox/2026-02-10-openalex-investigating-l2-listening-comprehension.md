@@ -6,7 +6,7 @@ doi: "https://doi.org/10.1016/j.compedu.2026.105593"
 collected: "2026-04-09"
 publication-date: "2026-02-10"
 authors: "Yanting Liang, Guangwei Hu"
-compiled: false
+compiled: true
 ---
 
 # Investigating L2 listening comprehension and experience in immersive and interactive virtual reality: An experimental study

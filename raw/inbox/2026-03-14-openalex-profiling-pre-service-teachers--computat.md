@@ -6,7 +6,7 @@ doi: "https://doi.org/10.18608/jla.2026.9077"
 collected: "2026-04-09"
 publication-date: "2026-03-14"
 authors: "Tanya Chichekian, MARIA CUTUMISU, Annie Savard, Yi-Mei Zhang"
-compiled: false
+compiled: true
 ---
 
 # Profiling Pre-service Teachers’ Computational Thinking

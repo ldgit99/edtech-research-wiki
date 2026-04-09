@@ -6,7 +6,7 @@ doi: "https://doi.org/10.1016/j.caeai.2026.100561"
 collected: "2026-04-09"
 publication-date: "2026-02-25"
 authors: "Sisi Tao, Min Lan, Minjuan Wang, Hui Li"
-compiled: false
+compiled: true
 ---
 
 # Potential risks of generative artificial intelligence integration into K-12 education: A scoping review

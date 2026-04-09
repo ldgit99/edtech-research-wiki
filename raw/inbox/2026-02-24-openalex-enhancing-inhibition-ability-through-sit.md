@@ -6,7 +6,7 @@ doi: "https://doi.org/10.1007/s11423-026-10593-3"
 collected: "2026-04-09"
 publication-date: "2026-02-24"
 authors: "Sora Chi-Fang Huang, Zhi-Hong Chen, Yu-Tzu Lin"
-compiled: false
+compiled: true
 ---
 
 # Enhancing inhibition ability through situational training games: effectiveness, motivation and experience

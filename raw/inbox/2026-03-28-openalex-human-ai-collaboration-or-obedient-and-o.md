@@ -6,7 +6,7 @@ doi: "https://doi.org/10.1016/j.iheduc.2026.101087"
 collected: "2026-04-09"
 publication-date: "2026-03-28"
 authors: "Mohammed Saqr, Kamila Misiejuk, Sonsoles López-Pernas"
-compiled: false
+compiled: true
 ---
 
 # Human-AI collaboration or obedient and often clueless AI in instruct, serve, repeat dynamics?

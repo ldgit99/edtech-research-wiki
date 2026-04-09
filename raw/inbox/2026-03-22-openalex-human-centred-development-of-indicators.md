@@ -6,7 +6,7 @@ doi: "https://doi.org/10.18608/jla.2026.8921"
 collected: "2026-04-09"
 publication-date: "2026-03-22"
 authors: "Shoeb Joarder, Mohamed Amine Chatti"
-compiled: false
+compiled: true
 ---
 
 # Human-Centred Development of Indicators for Self-Service Learning Analytics

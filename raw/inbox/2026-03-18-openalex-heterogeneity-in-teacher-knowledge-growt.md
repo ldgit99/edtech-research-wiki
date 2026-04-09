@@ -6,7 +6,7 @@ doi: "https://doi.org/10.1007/s11423-026-10596-0"
 collected: "2026-04-09"
 publication-date: "2026-03-18"
 authors: "Shuai Zhang, Kausalai Kay Wijekumar"
-compiled: false
+compiled: true
 ---
 
 # Heterogeneity in teacher knowledge growth across reading comprehension dimensions following professional development: a latent class and transition analysis

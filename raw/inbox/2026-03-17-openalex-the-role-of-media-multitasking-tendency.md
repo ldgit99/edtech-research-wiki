@@ -6,7 +6,7 @@ doi: "https://doi.org/10.1007/s11423-026-10607-0"
 collected: "2026-04-09"
 publication-date: "2026-03-17"
 authors: "Ion Yarritu, Iratxe Redondo, Priscila Comino, Nuria Galende"
-compiled: false
+compiled: true
 ---
 
 # The role of media multitasking tendency in medium effect on reading comprehension of university students

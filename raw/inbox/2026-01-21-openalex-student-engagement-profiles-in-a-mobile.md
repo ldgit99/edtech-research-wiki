@@ -6,7 +6,7 @@ doi: "https://doi.org/10.1007/s11423-026-10586-2"
 collected: "2026-04-09"
 publication-date: "2026-01-21"
 authors: "Jacqueline Wong, Mohammad Khalil, Vsevolod Suschevskiy, Martine Baars, Björn B. de Koning, Fred Paas"
-compiled: false
+compiled: true
 ---
 
 # Student engagement profiles in a mobile app: Links to self-regulated learning and performance

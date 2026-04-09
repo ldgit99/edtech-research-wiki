@@ -6,7 +6,7 @@ doi: "https://doi.org/10.1016/j.compedu.2026.105576"
 collected: "2026-04-09"
 publication-date: "2026-01-18"
 authors: "Chenyu Hou, Gaoxia Zhu, Yanzhi Liu, Vidya Sudarshan, Josephine Leng Leng Chong, Fannie Yifan Zhang, Michael Yong Heng Tan, Yew Soon Ong"
-compiled: false
+compiled: true
 ---
 
 # The effects of critical thinking intervention on reliance behaviors, problem-solving quality, and creativity during human-Generative AI collaborative learning

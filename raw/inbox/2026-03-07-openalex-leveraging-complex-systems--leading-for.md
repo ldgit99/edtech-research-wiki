@@ -6,7 +6,7 @@ doi: "https://doi.org/10.1016/j.caeai.2026.100563"
 collected: "2026-04-09"
 publication-date: "2026-03-07"
 authors: "Shane Dawson, Abelardo Pardo"
-compiled: false
+compiled: true
 ---
 
 # Leveraging complex systems: Leading for transformative change

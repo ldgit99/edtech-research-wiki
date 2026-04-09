@@ -6,7 +6,7 @@ doi: "https://doi.org/10.1007/s11423-026-10600-7"
 collected: "2026-04-09"
 publication-date: "2026-02-26"
 authors: "Jiayi Zou, Xinzhe Zhao, Kin Wai Michael Siu, Tianjiao Zhao"
-compiled: false
+compiled: true
 ---
 
 # Enhancing design ldeation: comparing AIGC-engaged and traditional brainstorming in educational contexts

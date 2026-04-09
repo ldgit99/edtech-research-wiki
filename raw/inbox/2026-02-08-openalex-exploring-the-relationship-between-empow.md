@@ -6,7 +6,7 @@ doi: "https://doi.org/10.1016/j.caeai.2026.100555"
 collected: "2026-04-09"
 publication-date: "2026-02-08"
 authors: "Siu Cheung Kong, Jinyu Zhu"
-compiled: false
+compiled: true
 ---
 
 # Exploring the relationship between empowerment in using artificial intelligence for problem-solving and artificial intelligence ethical awareness: Multi-group structural equation modelling
