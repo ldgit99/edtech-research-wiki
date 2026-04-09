@@ -1,0 +1,84 @@
+# 교육공학 학술지 RSS 피드 목록
+# Obsidian RSS Reader 플러그인 또는 feedparser에서 사용
+# 작성일: 2026-04-09
+
+international:
+  journals:
+    - name: "British Journal of Educational Technology"
+      url: "https://bera-journals.onlinelibrary.wiley.com/feed/14678535/most-recent"
+      category: "core-journal"
+
+    - name: "Journal of Learning Analytics"
+      url: "https://learning-analytics.info/index.php/JLA/gateway/plugin/WebFeedGatewayPlugin/rss2"
+      category: "learning-analytics"
+
+    - name: "npj Science of Learning (Nature)"
+      url: "https://www.nature.com/npjscilearn.rss"
+      category: "cognitive-science"
+
+    - name: "Educational Technology Research & Development"
+      url: "https://link.springer.com/search.rss?facet-journal-id=11423"
+      category: "core-journal"
+
+    - name: "Computers & Education (ScienceDirect)"
+      url: "https://rss.sciencedirect.com/publication/science/03601315"
+      category: "core-journal"
+
+    - name: "Internet and Higher Education"
+      url: "https://rss.sciencedirect.com/publication/science/10967516"
+      category: "higher-education"
+
+    - name: "Journal of Educational Technology & Society"
+      url: "https://www.j-ets.net/index.php/published-issues/rss"
+      category: "core-journal"
+
+  news:
+    - name: "EdSurge Research"
+      url: "https://www.edsurge.com/research.rss"
+      category: "edtech-news"
+
+    - name: "eLearning Industry"
+      url: "https://elearningindustry.com/feed"
+      category: "edtech-news"
+
+arxiv:
+  - name: "arXiv cs.CY (Computers and Society)"
+    url: "https://rss.arxiv.org/rss/cs.CY"
+    category: "preprint"
+    keywords_filter: true  # arxiv_collector.py에서 키워드 필터 적용
+
+  - name: "arXiv cs.HC (Human-Computer Interaction)"
+    url: "https://rss.arxiv.org/rss/cs.HC"
+    category: "preprint"
+    keywords_filter: true
+
+  - name: "arXiv cs.AI (Artificial Intelligence)"
+    url: "https://rss.arxiv.org/rss/cs.AI"
+    category: "preprint"
+    keywords_filter: true  # 교육 관련 항목만 필터
+
+korean:
+  # RISS/DBpia는 API 방식 사용 (riss_collector.py 참고)
+  platforms:
+    - name: "RISS 학술연구정보서비스"
+      url: "https://www.riss.kr"
+      method: "api"
+      script: "scripts/riss_collector.py"
+
+    - name: "DBpia"
+      url: "https://www.dbpia.co.kr"
+      method: "manual"
+      note: "DBpia RSS 또는 웹 클리핑 사용"
+
+    - name: "KISS 한국학술정보"
+      url: "https://kiss.kstudy.com"
+      method: "manual"
+
+collection_schedule:
+  daily:
+    - arxiv_collector.py
+    - openalex_collector.py
+
+  weekly:
+    - riss_collector.py
+    - collect_all.py  # 통합 실행
