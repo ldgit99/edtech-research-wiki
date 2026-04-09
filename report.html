@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>EdTech 연구 동향 보고서</title>
+<style>
+:root{
+  --bg:#f8fafc; --white:#ffffff; --bdr:#e2e8f0;
+  --txt:#1e293b; --muted:#64748b; --accent:#6366f1;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--txt);font-family:'Segoe UI',system-ui,sans-serif;
+      font-size:14px;line-height:1.75}
+.page{max-width:960px;margin:0 auto;padding:40px 24px}
+
+/* Cover */
+.cover{background:linear-gradient(135deg,#1e293b 0%,#312e81 100%);
+        color:#fff;padding:48px 40px;border-radius:16px;margin-bottom:32px}
+.cover-tag{font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+            color:#a5b4fc;margin-bottom:12px}
+.cover h1{font-size:28px;font-weight:800;line-height:1.3;margin-bottom:8px}
+.cover .sub{color:#cbd5e1;font-size:14px;margin-bottom:24px}
+.cover-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;
+              border-top:1px solid #ffffff20;padding-top:24px}
+.cs-item .cs-val{font-size:28px;font-weight:700;color:#a5b4fc}
+.cs-item .cs-lbl{font-size:11px;color:#94a3b8;margin-top:2px}
+
+/* Executive summary */
+.exec-summary{background:#fff;border:1px solid var(--bdr);border-left:4px solid var(--accent);
+               border-radius:8px;padding:20px 24px;margin-bottom:28px;
+               font-size:15px;line-height:1.8;color:#334155}
+
+/* Section */
+.section{margin-bottom:36px}
+.section-header{display:flex;align-items:center;gap:10px;margin-bottom:16px;
+                  padding-bottom:10px;border-bottom:2px solid var(--bdr)}
+.section-icon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;
+               justify-content:center;font-size:16px}
+.section-title{font-size:17px;font-weight:700}
+.section-count{font-size:11px;color:var(--muted);background:#f1f5f9;
+                padding:2px 8px;border-radius:99px;margin-left:auto}
+
+/* Trend cards */
+.trend-card{display:flex;gap:14px;background:#fff;border:1px solid var(--bdr);
+             border-radius:10px;padding:16px;margin-bottom:10px}
+.trend-num{width:28px;height:28px;border-radius:8px;color:#fff;font-weight:700;
+            font-size:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.trend-title{font-weight:600;font-size:14px;margin-bottom:5px}
+.trend-desc{color:#475569;line-height:1.65;margin-bottom:6px}
+.trend-evidence{font-size:11px;color:var(--muted);background:#f8fafc;
+                  padding:4px 8px;border-radius:4px;border-left:2px solid #cbd5e1}
+
+/* Clusters */
+.clusters-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px}
+.cluster-card{background:#fff;border:1px solid var(--bdr);border-radius:10px;padding:16px}
+.cluster-name{font-weight:700;font-size:14px;margin-bottom:8px;color:var(--accent)}
+.cluster-tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:10px}
+.tag{background:#ede9fe;color:#5b21b6;padding:2px 8px;border-radius:99px;
+       font-size:11px;font-weight:500}
+.cluster-desc{color:#475569;font-size:13px;line-height:1.6}
+
+/* Gaps */
+.gap-card{background:#fff;border:1px solid #fecaca;border-radius:10px;
+            padding:16px;margin-bottom:10px}
+.gap-area{font-weight:700;font-size:14px;color:#dc2626;margin-bottom:6px}
+.gap-desc{color:#475569;margin-bottom:8px;line-height:1.65}
+.gap-opp{background:#f0fdf4;border-left:3px solid #22c55e;padding:8px 12px;
+           border-radius:0 6px 6px 0;font-size:13px;color:#166534}
+
+/* Methodology */
+.method-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.method-item{background:#fff;border:1px solid var(--bdr);border-radius:10px;padding:16px}
+.method-label{font-size:11px;font-weight:700;text-transform:uppercase;
+               letter-spacing:.05em;margin-bottom:8px}
+.dominant .method-label{color:#6366f1}
+.emerging .method-label{color:#10b981}
+.missing .method-label{color:#f59e0b}
+.method-item>div:last-child{color:#475569;font-size:13px;line-height:1.65}
+
+/* Recommendations */
+.rec-card{background:#fff;border:1px solid var(--bdr);border-radius:10px;
+            padding:18px;margin-bottom:12px}
+.rec-header{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.rec-num{background:var(--accent);color:#fff;padding:2px 10px;border-radius:99px;
+           font-size:11px;font-weight:700}
+.rec-method{background:#ede9fe;color:#5b21b6;padding:2px 8px;border-radius:99px;
+              font-size:11px}
+.rec-question{font-size:15px;font-weight:600;color:#1e293b;margin-bottom:8px;
+               line-height:1.5;font-style:italic}
+.rec-rationale{color:#475569;line-height:1.65;margin-bottom:8px}
+.rec-journals{font-size:12px;color:var(--muted)}
+
+/* Stat bars */
+.stat-row{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.stat-label{width:200px;font-size:12px;color:#475569;flex-shrink:0;
+              white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.stat-bar-wrap{flex:1;background:#f1f5f9;border-radius:99px;height:8px;overflow:hidden}
+.stat-bar-fill{height:8px;border-radius:99px;transition:width .3s}
+.stat-val{width:30px;text-align:right;font-size:12px;font-weight:600;color:#334155}
+
+/* Stats side-by-side */
+.stats-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:28px}
+.stats-box{background:#fff;border:1px solid var(--bdr);border-radius:10px;padding:16px}
+.stats-box-title{font-size:12px;font-weight:700;text-transform:uppercase;
+                   letter-spacing:.05em;color:var(--muted);margin-bottom:12px}
+
+/* Footer */
+.footer{text-align:center;color:var(--muted);font-size:12px;
+          margin-top:40px;padding-top:20px;border-top:1px solid var(--bdr)}
+
+@media(max-width:700px){
+  .cover-stats{grid-template-columns:repeat(2,1fr)}
+  .clusters-grid,.method-grid,.stats-row{grid-template-columns:1fr}
+}
+@media print{
+  body{background:#fff}
+  .page{padding:20px}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- Cover -->
+<div class="cover">
+  <div class="cover-tag">EdTech Research Landscape Report</div>
+  <h1>교육공학 연구 동향 분석 보고서</h1>
+  <div class="sub">수집 논문 자동 분석 · GPT-4o-mini · 2026년 04월 09일 생성</div>
+  <div class="cover-stats">
+    <div class="cs-item"><div class="cs-val">184</div><div class="cs-lbl">수집 논문</div></div>
+    <div class="cs-item"><div class="cs-val">35</div><div class="cs-lbl">Wiki 토픽</div></div>
+    <div class="cs-item"><div class="cs-val">19</div><div class="cs-lbl">성숙 토픽 (≥5편)</div></div>
+    <div class="cs-item"><div class="cs-val">13</div><div class="cs-lbl">연구 공백 (≤2편)</div></div>
+  </div>
+</div>
+
+<!-- Executive Summary -->
+<div class="exec-summary">
+  <strong>핵심 요약 —</strong> 2026년에 발행된 교육공학 관련 논문들은 교육 현장의 새로운 기술 통합과 학습 분석을 중점적으로 다루고 있다. 생성형 AI, 학습 분석, 피드백 등 여러 주제가 교육의 질과 접근성을 향상시키기 위한 연구로 이어지고 있다.
+</div>
+
+<!-- Stats -->
+<div class="stats-row">
+  <div class="stats-box">
+    <div class="stats-box-title">주요 학술지 (상위 5)</div>
+    <div class="stat-row">
+          <span class="stat-label">Learning and Instruction</span>
+          <div class="stat-bar-wrap">
+            <div class="stat-bar-fill" style="width:16%;background:#6366f1"></div>
+          </div>
+          <span class="stat-val">31</span>
+        </div><div class="stat-row">
+          <span class="stat-label">Computers & Education</span>
+          <div class="stat-bar-wrap">
+            <div class="stat-bar-fill" style="width:14%;background:#6366f1"></div>
+          </div>
+          <span class="stat-val">26</span>
+        </div><div class="stat-row">
+          <span class="stat-label">Educational Technology Research & D</span>
+          <div class="stat-bar-wrap">
+            <div class="stat-bar-fill" style="width:14%;background:#6366f1"></div>
+          </div>
+          <span class="stat-val">26</span>
+        </div><div class="stat-row">
+          <span class="stat-label">Computers and Education AI</span>
+          <div class="stat-bar-wrap">
+            <div class="stat-bar-fill" style="width:13%;background:#6366f1"></div>
+          </div>
+          <span class="stat-val">25</span>
+        </div><div class="stat-row">
+          <span class="stat-label">Journal of Learning Analytics</span>
+          <div class="stat-bar-wrap">
+            <div class="stat-bar-fill" style="width:7%;background:#6366f1"></div>
+          </div>
+          <span class="stat-val">13</span>
+        </div>
+  </div>
+  <div class="stats-box">
+    <div class="stats-box-title">토픽별 소스 집중도 (상위 8)</div>
+    <div class="stat-row">
+          <span class="stat-label">교육에서의 생성형 AI (Generative AI in</span>
+          <div class="stat-bar-wrap">
+            <div class="stat-bar-fill" style="width:100%;background:#10b981"></div>
+          </div>
+          <span class="stat-val">18</span>
+        </div><div class="stat-row">
+          <span class="stat-label">학습 분석학 (Learning Analytics)</span>
+          <div class="stat-bar-wrap">
+            <div class="stat-bar-fill" style="width:77%;background:#10b981"></div>
+          </div>
+          <span class="stat-val">14</span>
+        </div><div class="stat-row">
+          <span class="stat-label">피드백 (Feedback in Learning)</span>
+          <div class="stat-bar-wrap">
+            <div class="stat-bar-fill" style="width:61%;background:#10b981"></div>
+          </div>
+          <span class="stat-val">11</span>
+        </div><div class="stat-row">
+          <span class="stat-label">협동학습 (Collaborative Learning)</span>
+          <div class="stat-bar-wrap">
+            <div class="stat-bar-fill" style="width:55%;background:#10b981"></div>
+          </div>
+          <span class="stat-val">10</span>
+        </div><div class="stat-row">
+          <span class="stat-label">자기조절학습 (Self-Regulated Learnin</span>
+          <div class="stat-bar-wrap">
+            <div class="stat-bar-fill" style="width:44%;background:#10b981"></div>
+          </div>
+          <span class="stat-val">8</span>
+        </div><div class="stat-row">
+          <span class="stat-label">교사 전문성 개발 (Teacher Professiona</span>
+          <div class="stat-bar-wrap">
+            <div class="stat-bar-fill" style="width:44%;background:#10b981"></div>
+          </div>
+          <span class="stat-val">8</span>
+        </div><div class="stat-row">
+          <span class="stat-label">인간-AI 협력 (Human-AI Collaborati</span>
+          <div class="stat-bar-wrap">
+            <div class="stat-bar-fill" style="width:38%;background:#10b981"></div>
+          </div>
+          <span class="stat-val">7</span>
+        </div><div class="stat-row">
+          <span class="stat-label">멀티모달 학습 분석학 (Multimodal Learni</span>
+          <div class="stat-bar-wrap">
+            <div class="stat-bar-fill" style="width:38%;background:#10b981"></div>
+          </div>
+          <span class="stat-val">7</span>
+        </div>
+  </div>
+</div>
+
+<!-- Trends -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-icon" style="background:#ede9fe">📈</div>
+    <div class="section-title">연구 동향</div>
+    <span class="section-count">5개 동향 식별</span>
+  </div>
+  
+            <div class="trend-card">
+              <div class="trend-num" style="background:#6366f1">1</div>
+              <div class="trend-body">
+                <div class="trend-title">생성형 AI의 교육적 활용</div>
+                <div class="trend-desc">최근의 연구는 생성형 AI의 교육적 응용 가능성을 탐구하고 있으며, 이러한 동향은 컴퓨터와 교육 AI 저널에서 두드러진다. 특히, AI 기술이 학습자의 창의성을 증진할 수 있는 방법에 대한 논의가 활발하다.</div>
+                <div class="trend-evidence">근거: ‘Generative AI in higher education: A bibliometric review of emerging trends, power dynamics, and glo’, ‘Can Generative AI support the learning agency of students with disability?’</div>
+              </div>
+            </div>
+            <div class="trend-card">
+              <div class="trend-num" style="background:#10b981">2</div>
+              <div class="trend-body">
+                <div class="trend-title">학습 분석의 중요성 증가</div>
+                <div class="trend-desc">학습 분석 분야의 연구들이 교육 결과를 최적화하고 있으며, 이는 Learning Analytics 저널에서 받아들이고 있다. 데이터를 분석하여 학습 향상에 기여하는 다양한 방법들이 제안되고 있다.</div>
+                <div class="trend-evidence">근거: ‘Learning Analytics to Uncover Ethnic Bias in Educational Texts’, ‘Evaluating 21st-Century Competencies in Postsecondary Curricula with Large Language Models’</div>
+              </div>
+            </div>
+            <div class="trend-card">
+              <div class="trend-num" style="background:#f59e0b">3</div>
+              <div class="trend-body">
+                <div class="trend-title">피드백 메커니즘의 재조명</div>
+                <div class="trend-desc">피드백의 양적 및 질적 차원에 대한 연구가 늘어나고 있으며, 이는 주로 Learning and Instruction 저널에서 다루어진다. 학습자의 성취를 높이기 위한 효과적인 피드백 제공 방법이 지속적으로 강조되고 있다.</div>
+                <div class="trend-evidence">근거: ‘Effects of peer feedback and self-assessment on writing’, ‘Feedback source and target matter: Students’ social-psychological perceptions in online asynchronous courses’</div>
+              </div>
+            </div>
+            <div class="trend-card">
+              <div class="trend-num" style="background:#3b82f6">4</div>
+              <div class="trend-body">
+                <div class="trend-title">협동 학습 및 자기 조절 학습의 중요성</div>
+                <div class="trend-desc">교육 현장에서 협동 학습과 자기 조절 학습이 중요한 주제로 다뤄지고 있으며, 이를 통해 학습자 중심의 접근이 확대되고 있다. 관련 논문들은 다양한 교육 효과를 증명하고 있다.</div>
+                <div class="trend-evidence">근거: ‘Connecting joint visual attention, community belonging, and self-efficacy in makerspace environments’, ‘Regarding caveats on reliability evidence’</div>
+              </div>
+            </div>
+            <div class="trend-card">
+              <div class="trend-num" style="background:#ef4444">5</div>
+              <div class="trend-body">
+                <div class="trend-title">AI 윤리에 대한 논의</div>
+                <div class="trend-desc">AI 기술이 교육에 미치는 영향에 대한 윤리적 논의가 활발해지고 있다. 이와 관련된 연구들은 AI 시스템 사용 시의 윤리적 고려사항을 다루며, British Journal of Educational Technology에서 주로 발표되고 있다.</div>
+                <div class="trend-evidence">근거: ‘When machines join the moral circle: The persona effect of generative AI agents in collaborations’, ‘Development and evaluation of artificial intelligence literacy training for teacher education students’</div>
+              </div>
+            </div>
+</div>
+
+<!-- Clusters -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-icon" style="background:#d1fae5">🔗</div>
+    <div class="section-title">연구 클러스터</div>
+    <span class="section-count">3개 클러스터</span>
+  </div>
+  <div class="clusters-grid">
+            <div class="cluster-card">
+              <div class="cluster-name">AI 기반 교육 혁신</div>
+              <div class="cluster-tags"><span class="tag">교육에서의 생성형 AI</span><span class="tag">AI 리터러시</span></div>
+              <div class="cluster-desc">AI 기술 발전에 맞춰 교육이 어떻게 혁신될 수 있는지를 탐구하는 연구 흐름이 형성되었다.</div>
+            </div>
+            <div class="cluster-card">
+              <div class="cluster-name">학습 최적화를 위한 분석</div>
+              <div class="cluster-tags"><span class="tag">학습 분석학</span><span class="tag">자기조절학습</span></div>
+              <div class="cluster-desc">학습 성과를 향상시키기 위한 데이터 중심의 접근이 강화되고 있으며, 이는 다양한 학습 환경에 적용되고 있다.</div>
+            </div>
+            <div class="cluster-card">
+              <div class="cluster-name">교사 전문성 개발</div>
+              <div class="cluster-tags"><span class="tag">교사 전문성 개발</span><span class="tag">AI 튜터링 시스템</span></div>
+              <div class="cluster-desc">교사의 역량과 AI 기술의 통합을 통한 교육 개선을 위한 연구가 증가하고 있다.</div>
+            </div></div>
+</div>
+
+<!-- Gaps -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-icon" style="background:#fee2e2">🔍</div>
+    <div class="section-title">연구 공백 및 기회</div>
+    <span class="section-count">5개 공백 식별</span>
+  </div>
+  
+            <div class="gap-card">
+              <div class="gap-area">🔴 AI 통합 교육의 실증 연구 부족</div>
+              <div class="gap-desc">직접적인 AI 통합 사례에 대한 연구가 부족하여 효과적인 적용 방법을 고찰할 여지가 있다.</div>
+              <div class="gap-opp">💡 대학 및 K-12 교육 현장에 AI 통합의 실제 사례 연구를 진행하여 교육효과를 분석하는 연구가 필요하다.</div>
+            </div>
+            <div class="gap-card">
+              <div class="gap-area">🔴 피드백 유형의 일관성 부족</div>
+              <div class="gap-desc">AI 기반 피드백 시스템과 인간 피드백의 효과에 대한 체계적인 비교 연구가 부족하다.</div>
+              <div class="gap-opp">💡 피드백 유형이 학습자의 성과에 미치는 영향을 실증적으로 분석하는 연구가 필요하다.</div>
+            </div>
+            <div class="gap-card">
+              <div class="gap-area">🔴 AI 윤리적 원칙의 부재</div>
+              <div class="gap-desc">AI 기술의 교육적 사용에 대한 윤리적 규범과 가이드라인 개발이 부족하다.</div>
+              <div class="gap-opp">💡 교육 분야에서의 AI 윤리를 구체화하는 연구 및 가이드라인 제정이 요구된다.</div>
+            </div>
+            <div class="gap-card">
+              <div class="gap-area">🔴 멀티모달 학습 분석의 적용 부족</div>
+              <div class="gap-desc">학습 분석에서 멀티모달 데이터의 활용이 잘 이루어지지 않고 있다.</div>
+              <div class="gap-opp">💡 다양한 데이터를 활용하여 학습 과정을 실시간으로 분석하고 개입하는 연구가 필요하다.</div>
+            </div>
+            <div class="gap-card">
+              <div class="gap-area">🔴 협동 학습의 효과 분석 부족</div>
+              <div class="gap-desc">협동 학습이 학생들의 학습 성과에 미치는 영향을 체계적으로 분석한 연구가 부족하다.</div>
+              <div class="gap-opp">💡 협동 학습의 다양한 형태와 효과를 분석하는 비교 연구가 요구된다.</div>
+            </div>
+</div>
+
+<!-- Methodology -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-icon" style="background:#fef9c3">⚗️</div>
+    <div class="section-title">방법론 동향</div>
+  </div>
+  
+        <div class="method-grid">
+          <div class="method-item dominant">
+            <div class="method-label">지배적 방법론</div>
+            <div>현재 지배적인 방법론은 체계적 문헌 검토이며, 이는 연구 현황을 정리하고 추세를 파악하기에 유용하다.</div>
+          </div>
+          <div class="method-item emerging">
+            <div class="method-label">부상 중인 방법론</div>
+            <div>설계 기반 연구가 대두되고 있으며, 이는 교육 현장에서의 실질적 개선을 목표로 한다.</div>
+          </div>
+          <div class="method-item missing">
+            <div class="method-label">활용 부족 방법론</div>
+            <div>프로토콜 기반의 실험 연구가 충분히 활용되지 않고 있으며, 특히 AI 통합 교육의 효과를 검증하는 데 적용 가능하다.</div>
+          </div>
+        </div>
+</div>
+
+<!-- Recommendations -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-icon" style="background:#dbeafe">💡</div>
+    <div class="section-title">추천 연구 방향</div>
+    <span class="section-count">5개 제안</span>
+  </div>
+  
+            <div class="rec-card">
+              <div class="rec-header">
+                <span class="rec-num">추천 1</span>
+                <span class="rec-method">실험 연구 및 사례 연구</span>
+              </div>
+              <div class="rec-question">"생성형 AI가 학습자의 창의성을 향상시키는가?"</div>
+              <div class="rec-rationale">현재 AI의 교육적 활용에 대한 논의가 활발하지만, 그 효과에 대한 체계적인 연구가 필요하다.</div>
+              <div class="rec-journals">📰 British Journal of Educational Technology · Journal of Learning Analytics</div>
+            </div>
+            <div class="rec-card">
+              <div class="rec-header">
+                <span class="rec-num">추천 2</span>
+                <span class="rec-method">비교 연구 및 메타 분석</span>
+              </div>
+              <div class="rec-question">"AI 기반 피드백이 학습 성과에 미치는 영향은?"</div>
+              <div class="rec-rationale">AI 피드백과 인간 피드백 간의 효과 차이를 분석할 필요가 있다.</div>
+              <div class="rec-journals">📰 Learning and Instruction · Educational Technology Research & Development</div>
+            </div>
+            <div class="rec-card">
+              <div class="rec-header">
+                <span class="rec-num">추천 3</span>
+                <span class="rec-method">이론적 연구 및 정책 분석</span>
+              </div>
+              <div class="rec-question">"AI 윤리에 대한 명확한 가이드라인은 무엇인가?"</div>
+              <div class="rec-rationale">AI 기술이 교육에 통합됨에 따라 윤리적 쟁점 해결이 시급하다.</div>
+              <div class="rec-journals">📰 Internet and Higher Education · Computers & Education</div>
+            </div>
+            <div class="rec-card">
+              <div class="rec-header">
+                <span class="rec-num">추천 4</span>
+                <span class="rec-method">사례 연구 및 혼합 연구 방법론</span>
+              </div>
+              <div class="rec-question">"멀티모달 데이터가 학습 분석에 미치는 장점은 무엇인가?"</div>
+              <div class="rec-rationale">학습의 복합성을 이해하고 이를 지원하기 위해 다양한 데이터 분석이 요구된다.</div>
+              <div class="rec-journals">📰 Learning Analytics · Computers and Education AI</div>
+            </div>
+            <div class="rec-card">
+              <div class="rec-header">
+                <span class="rec-num">추천 5</span>
+                <span class="rec-method">실험 연구 및 질적 연구</span>
+              </div>
+              <div class="rec-question">"협동 학습의 다양한 형태가 학습 성과에 미치는 영향은?"</div>
+              <div class="rec-rationale">협동 학습의 효과를 정량적으로 측정하고 분석할 필요가 있다.</div>
+              <div class="rec-journals">📰 Learning and Instruction · Educational Technology Research & Development</div>
+            </div>
+</div>
+
+<div class="footer">
+  본 보고서는 184편의 수집 논문을 GPT-4o-mini로 자동 분석하여 생성되었습니다.<br>
+  EdTech Research Wiki · 2026년 04월 09일 · <a href="dashboard.html" style="color:#6366f1">대시보드 보기</a>
+</div>
+
+</div>
+</body>
+</html>
