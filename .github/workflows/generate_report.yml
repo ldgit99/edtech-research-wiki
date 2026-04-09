@@ -15,6 +15,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          ref: master
+          fetch-depth: 0
+
+      - name: Pull latest
+        run: git pull origin master
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -38,7 +44,6 @@ jobs:
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git pull --rebase origin master
           git add report.html dashboard.html scripts/.report_cache.json scripts/.research_questions.json || true
           git diff --cached --quiet || git commit -m "chore: 보고서·대시보드 자동 갱신 $(date +'%Y-%m-%d')"
           git push
