@@ -1,132 +1,144 @@
 {
-  "generated_at": "2026-09-15T00:05:05.152095",
+  "generated_at": "2026-09-22T00:24:22.788405",
   "paper_count": 184,
   "schema_version": 2,
   "data": {
-    "executive_summary": "본 보고서는 2026년에 발표된 교육공학(EdTech) 분야의 184편 논문을 기반으로 최신 연구 동향을 분석하였다. 주요 주제로는 생성형 AI, 학습 분석학, 협동학습 등이 있으며, 이를 통해 교육 현장에서의 기술 활용과 혁신적 교수법의 발전 방향을 제시한다.",
+    "executive_summary": "본 보고서는 2026년에 발표된 교육공학 분야의 연구 동향을 분석하고, 생성형 AI와 학습 분석학 관련 논문을 중심으로 하는 주요 경향을 제시한다. 또한, 연구의 공백 영역과 향후 연구 방향에 대한 권고안을 포함한다.",
     "trends": [
       {
         "title": "생성형 AI의 교육적 활용",
-        "description": "생성형 AI가 교육 환경에서 어떻게 활용되고 있는지를 다룬 논문들이 다수 발표되었다. 특히 'Generative AI in higher education'와 같은 연구는 AI의 교육적 효용성을 강조한다.",
-        "evidence": "Generative AI in higher education, Learner agency in revising GenAI, Enhancing AI literacy for educators",
-        "details": "生成형 AI는 학생의 학습 참여도를 높이고 개인화된 교육 지원을 가능하게 한다. 특히 'Generative AI in higher education' 연구에서는 AI의 bibliometric 분석을 통해 최신 트렌드를 파악하였다. 이러한 연구들은 AI 시스템이 제대로 설계될 경우 교육적 성과를 극대화할 수 있음을 보여준다. 향후에는 AI의 윤리적 측면 및 교육 효과에 대한 지속적인 모니터링이 필요하다."
+        "description": "최근 교육적 맥락에서 생성형 AI의 적용이 증가하고 있다. 'Generative AI in higher education: A bibliometric review of emerging trends'와 같은 연구들이 이 주제를 심도 있게 다루고 있다.",
+        "evidence": [
+          "Generative AI in higher education",
+          "Generative AI: A double-edged sword for creative thinking learning"
+        ],
+        "details": "생성형 AI는 교육과정에 혁신적인 변화를 가져오는 요소로 주목받고 있다. 여러 연구들은 AI가 학생들의 창의적 사고 및 문제 해결 능력에 긍정적인 영향을 미친다고 보고하고 있으며, AI를 통한 맞춤형 교육의 가능성이 제시된다. 그러나 AI가 야기하는 윤리적 문제 및 학생의 학습 경험에 미치는 영향에 대해서도 심각한 고려가 필요하다. 향후 연구는 AI의 교육적 통합과 함께 생기는 다양한 영향력과 그 환경적 요인들에 대해 집중적으로 탐구할 필요가 있다."
       },
       {
-        "title": "학습 분석학의 중요성 증가",
-        "description": "학습자의 데이터를 기반으로 한 학습 분석학의 연구가 증가하고 있으며, 이는 교육 시스템의 개선에 기여하고 있다.",
-        "evidence": "Learning Analytics to Uncover Ethnic Bias, Temporal Network Analysis of Collaborative Prototyping",
-        "details": "학습 분석학은 학습 데이터의 수집과 분석을 통해 교육 환경을 최적화하는 데 중요한 역할을 하고 있다. 특히, 'Learning Analytics to Uncover Ethnic Bias'에서는 교육 텍스트에서의 편향을 분석하여 교육 형평성을 높이려는 노력을 했다. 미래 연구에서는 데이터 수집의 윤리적 문제와 관련한 연구가 더욱 필요할 것이다."
+        "title": "학습 분석학의 발전",
+        "description": "학습자 데이터 분석을 통한 교육 환경 최적화가 뚜렷한 연구 동향으로 자리 잡고 있다. 관련 연구로는 'Learning Analytics to Uncover Ethnic Bias in Educational Texts'가 있다.",
+        "evidence": [
+          "Learning Analytics to Uncover Ethnic Bias",
+          "Evaluating 21st-Century Competencies in Postsecondary Curricula"
+        ],
+        "details": "학습 분석학은 학생의 학습 행동 및 성과를 수치적으로 분석하여 맞춤형 피드백을 제공하는 방향으로 발전하고 있다. 신기술의 도입으로 학습자의 성격적 특성 및 행동 패턴을 더욱 세밀하게 파악할 수 있으며, 이는 교육적 접근 방식을 재구성하는 데 기여하고 있다. 그러나 이 분야의 데이터 윤리 및 사생활 보호 문제 역시 지속해서 논의되어야 한다."
       },
       {
-        "title": "협동학습의 최전선",
-        "description": "협동학습에 관한 논문들이 대거 발표되었으며, 이는 학습자의 상호작용과 공동성취를 강조하고 있다.",
-        "evidence": "Collaborative co-design in action, Exploring the relationship between empowerment in using AI",
-        "details": "협동학습은 학습자의 참여와 공동작업을 통해 지식을 생성하는 중요한 방법론으로 자리잡고 있다. 'Collaborative co-design in action' 연구에서는 교사 전문성 개발을 위한 새로운 접근법이 제안되었다. 이러한 방향은 교육 현장에서의 실천적 적용 가능성을 높이고, 협력적 사고 및 문제 해결 능력을 함양하는 데 기여할 것이다."
+        "title": "협동학습의 중요성",
+        "description": "협동학습이 학습자 간의 상호작용을 통해 지식 공동 생성에 기여한다는 점이 강조되고 있다. 'From emergency to institutionalisation: Teacher readiness and practices in synchronous hybrid education'와 같이 관련 연구들이 있다.",
+        "evidence": [
+          "From emergency to institutionalisation",
+          "Analyzing embodied learning in classroom settings"
+        ],
+        "details": "협동학습은 학생들이 집단으로 문제를 해결하고 지식을 공유하는데 있어 매우 효과적인 방법으로 자리 잡았다. 연구자들은 다양한 교수법이 협동학습에서 어떻게 실현될 수 있는지 탐색하고 있으며, 이는 학생 참여 및 학습 결과에 긍정적인 영향을 미치고 있다. 향후 연구는 비대면 및 하이브리드 환경에서 협동학습의 효과성에 대한 실증적 분석이 필요하다."
       },
       {
-        "title": "AI 리터러시의 필요성",
-        "description": "많은 연구들이 AI 리터러시의 중요성을 부각시키고 있으며, 이는 교육 시스템에서의 AI 통합에 필수적이다.",
-        "evidence": "AI literacy, Enhancing AI literacy for educators, What undergraduate students need to know about generative AI",
-        "details": "AI 리터러시는 교육에서 AI 기술을 비판적으로 이해하고 활용할 수 있는 능력으로, 'Enhancing AI literacy for educators' 연구는 교육자들에게 첫 발을 내딛게 하는 방법론을 제시하였다. AI 리터러시에 대한 교육과정 개발은 학생들이 기술에 대한 올바른 인식을 갖게 하고, 교육의 질을 높이는 데 기여할 수 있다."
+        "title": "AI 리터러시 향상 필요성",
+        "description": "AI 교육 및 리터러시 향상이 점점 중요한 요소로 대두되고 있다. 'Enhancing AI literacy for educators: Where to start and to what end?' 같은 문헌이 이에 대한 기초적 이해를 제공한다.",
+        "evidence": [
+          "Enhancing AI literacy for educators",
+          "Artificial intelligence literacy at school"
+        ],
+        "details": "AI 리터러시는 현대 교육에서 필수 요소로 인식되고 있으며, 교육자들이 AI 기술을 효과적으로 활용하기 위한 다양한 프로그램이 제안되고 있다. 특히, AI에 대한 이해는 교육적 맥락뿐만 아니라 미래의 직업 선택에 있어서도 중요하다는 점에서, 리터러시 교육의 체계화가 필요하다. 이에 따라, 새로운 교육과정 및 교수법 개발에 대한 연구가 활발히 이루어져야 한다."
       }
     ],
     "clusters": [
       {
-        "name": "AI와 교육 혁신",
+        "name": "기술과 교육의 통합",
         "topics": [
-          "생성형 AI",
-          "AI 리터러시"
+          "AI 리터러시",
+          "생성형 AI"
         ],
-        "description": "AI 기술을 통한 교육 혁신과 그 수반하는 리터러시 교육이 중시되는 흐름이 있다."
+        "description": "기술이 교육에 접목되는 방식과 그 영향에 대한 연구가 활발히 진행되고 있다."
       },
       {
-        "name": "데이터 기반 교육",
-        "topics": [
-          "학습 분석학",
-          "피드백"
-        ],
-        "description": "학습자의 데이터를 활용한 연구와 피드백 메커니즘이 교육 개선의 핵심으로 부각되고 있다."
-      },
-      {
-        "name": "협동적 학습 경험",
+        "name": "학습자 중심의 접근",
         "topics": [
           "협동학습",
           "자기조절학습"
         ],
-        "description": "학습자 간의 협력과 자주적인 학습 능력을 향상시키기 위한 연구들이 활발히 진행되고 있다."
+        "description": "학습자의 역할과 참여를 중심으로 한 교수법들이 적극적으로 연구되고 있다."
+      },
+      {
+        "name": "윤리적 이슈",
+        "topics": [
+          "AI 윤리",
+          "공정성"
+        ],
+        "description": "AI 도입에 따른 윤리적 문제와 교육의 형평성을 고려한 연구가 중요해지고 있다."
       }
     ],
     "gaps": [
       {
-        "area": "AI 통합 교육의 실험적 연구",
-        "description": "AI 통합 교육의 실험적인 접근이 부족해 실질적인 효과를 검증할 기회가 결여되어 있다.",
-        "opportunity": "AI 통합 교육 프로그램을 실험하고 그 성과를 비교 분석하는 연구가 필요하다."
+        "area": "AI와 인간 피드백의 비교 연구",
+        "description": "AI 피드백과 인간 피드백 간의 효용성을 비교하는 연구가 부족하다.",
+        "opportunity": "이 공백을 메우기 위해 실제 학습 환경에서 두 피드백 방식을 비교하고, 그 결과를 정량적, 정성적으로 분석하는 연구가 필요하다."
       },
       {
-        "area": "AI 기술의 윤리적 측면",
-        "description": "AI 사용의 윤리적 문제에 대한 연구가 부족하여 교육 현장에서의 AI 사용에 대한 신뢰를 구축하기 어렵다.",
-        "opportunity": "AI 윤리에 대한 심층적인 연구를 진행하거나 교육 프로그램에 윤리적 프레임워크를 포함할 수 있다."
+        "area": "AI의 윤리적 사용",
+        "description": "AI의 사용에 따른 윤리적 기준 및 정책에 관한 연구가 부족하다.",
+        "opportunity": "특히, 교육적 맥락에서 AI 사용의 윤리가 어떻게 구체화될 수 있는지에 대한 정책 제안 및 연구가 필요하다."
       },
       {
-        "area": "상호작용적 학습 환경",
-        "description": "몰입형 기술 (VR, AR 등)을 활용한 학습 환경에 대한 연구가 상대적으로 미비하다.",
-        "opportunity": "몰입형 학습에서 사용자 경험을 개선하는 방안을 연구하여 교육 현장에 적용할 수 있다."
+        "area": "AI 리터러시 사각지대",
+        "description": "AI에 대한 리터러시 교육이 특정 집단에 한정되어 있어 전 교육과정에 통합되지 못하고 있다.",
+        "opportunity": "AI 리터러시 교육을 포괄적이고 실용적으로 접근하는 프로그램 개발이 필요하다."
       },
       {
-        "area": "전문가와의 협력 연구",
-        "description": "전문가와 교육자 간의 협력을 통한 경험 기반 학습 연구가 부족하다.",
-        "opportunity": "전문가와 교육자가 함께 연구하여 실제 교육 현장에 적용 가능한 모델을 개발할 수 있다."
+        "area": "비대면 협동학습의 효과성",
+        "description": "COVID-19 이후 비대면 협동학습 방식에 대한 연구가 부족하다.",
+        "opportunity": "비대면 상황에서도 협동학습의 효과성을 제고하기 위한 실험적 연구가 필요하다."
       }
     ],
     "methodology": {
-      "dominant": "연구의 대부분이 체계적 문헌 검토 방법론을 활용하고 있으며, 이는 기존 연구 결과를 종합하여 현황을 파악하는 데 유리하다.",
-      "emerging": "설계 기반 연구가 점차 증가하고 있으며, 이는 실제 교육 현장에서의 실행과 평가를 지속적으로 개선하기 위한 접근법으로 주목받고 있다.",
-      "missing": "연구 디자인에서 질적 연구 방법이 상대적으로 부족하여, 경험적 사례 기반의 심층 분석 연구가 필요하다."
+      "dominant": "현재 지배적인 방법론은 체계적 문헌 검토로, 다양한 주제에 대한 종합적인 이해와 추세 분석을 제공한다.",
+      "emerging": "디자인 기반 연구 방식이 새로운 동향으로 부각되고 있으며, 교육적 설계와 실천을 통합적으로 개선하는 데 중점을 두고 있다.",
+      "missing": "질적 방법론인 사례 연구가 활용되지 않고 있으며, 구체적인 사례를 통해 AI 통합 교육의 효과성을 심층적으로 분석할 수 있는 기회가 있다."
     },
     "recommendations": [
       {
-        "question": "AI 통합 교육의 경험적 효과는 무엇인가?",
-        "rationale": "AI 기술이 통합된 교육이 실제로 학습자에게 긍정적인 결과를 미치는지를 검토할 필요가 있다.",
-        "method": "실험 연구",
+        "question": "AI 피드백과 인간 피드백의 상대적 효율성은 무엇인가?",
+        "rationale": "현재 AI 피드백의 활용과 인간 피드백의 비교 연구가 부족하여 명확한 결론을 도출하는 필요성이 있다.",
+        "method": "혼합 방법론 연구",
         "journals": [
           "Computers & Education",
           "Educational Technology Research & Development"
         ]
       },
       {
-        "question": "AI 리터러시 프로그램의 디자인은 어떻게 해야 하는가?",
-        "rationale": "효과적인 AI 리터러시를 위한 교육적 접근 방식을 제안할 필요가 있다.",
-        "method": "설계 기반 연구",
+        "question": "AI 리터러시 교육이 학생의 학습 경험에 미치는 영향은?",
+        "rationale": "AI 리터러시의 중요성이 증가하는 가운데 이 교육이 실제로 어떤 영향을 미치는지에 대한 실증적 연구가 부족하다.",
+        "method": "장기적 사례 연구",
         "journals": [
           "British Journal of Educational Technology",
           "Journal of Learning Analytics"
         ]
       },
       {
-        "question": "협동학습 환경에서 AI의 역할은 무엇인가?",
-        "rationale": "협동학습에서 AI의 활용 가능성을 탐구하여 실질적 효과를 분석해야 한다.",
-        "method": "혼합 방법 연구",
+        "question": "비대면 협동학습의 효과는 무엇인가?",
+        "rationale": "COVID-19 이후 비대면 협동학습에 대한 연구가 부족해 그 효과를 명확히 파악할 필요가 있다.",
+        "method": "실험 연구",
         "journals": [
           "Learning and Instruction",
           "Computers and Education AI"
         ]
       },
       {
-        "question": "AI 사용의 윤리적 쟁점은 무엇인가?",
-        "rationale": "AI 기술의 교육적 활용에 대한 윤리적 문제를 심층적으로 분석할 필요가 있다.",
-        "method": "질적 연구",
+        "question": "AI 사용에 따른 윤리적 이슈는 어떤 형태로 나타나는가?",
+        "rationale": "AI의 교육적 활용에 따른 윤리적 문제들을 탐구하는 연구가 필요하다.",
+        "method": "정성적 사례 연구",
         "journals": [
-          "Educational Technology Research & Development",
-          "Internet and Higher Education"
+          "International Journal of AI in Education",
+          "Educational Technology Research & Development"
         ]
       },
       {
-        "question": "몰입형 학습 환경의 효과는 어떻게 측정할 것인가?",
-        "rationale": "몰입형 학습 환경의 실질적 효과를 측정하고 개선 방안을 도출해야 한다.",
-        "method": "사례 연구",
+        "question": "AI와 학생 간의 상호작용은 어떻게 최적화할 수 있는가?",
+        "rationale": "AI와 학습자 간의 상호작용 최적화에 대한 연구가 부족하여, 이를 통해 학습 성과를 향상시키는 방안이 필요하다.",
+        "method": "혼합 방법론 연구",
         "journals": [
-          "Computers & Education",
-          "Journal of Learning Analytics"
+          "Educational Technology Research & Development",
+          "Computers & Education"
         ]
       }
     ]
